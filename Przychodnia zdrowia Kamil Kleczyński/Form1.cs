@@ -21,6 +21,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczyński
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //ToDo do przerobienia
             lvPatient.Items.Clear();
             lvWorker.Items.Clear();
 
