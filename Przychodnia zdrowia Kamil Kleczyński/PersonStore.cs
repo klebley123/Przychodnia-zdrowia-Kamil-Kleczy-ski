@@ -1,8 +1,7 @@
-﻿using Przychodnia_zdrowia_Kamil_Kleczynski;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Przychodnia_zdrowia_Kamil_Kleczyński
+namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
     public class PersonStore : Validate
     {

@@ -1,10 +1,5 @@
-﻿using Przychodnia_zdrowia_Kamil_Kleczyński;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
@@ -19,9 +14,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         public List<string> Disease { get; set; }
         public List<DateTime> DateVisits { get; set; }
 
-        #region konstruktory
-        // konstruktor bezargumentowy
-        public Patient() : base()
+        public Patient()
         {
             MedicalRecordNumber = "123456";
             PrimaryDoctor = "Marek Sowula";
@@ -32,10 +25,9 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             DateVisits = new List<DateTime>();
         }
 
-        //// konstruktor wieloargumentowy
-        public Patient(string pesel, string idNumber, string firstName, string lastName, string address, string email, string phoneNumber,
-                        bool insurance, string medicalRecordNumber, string primaryDoctor, int weight, int height, string bloodGroup,
-                        List<string>disease, List<DateTime>dateVisits)
+        public Patient(string pesel, string idNumber, string firstName, string lastName, string address, string email,
+            string phoneNumber, bool insurance, string medicalRecordNumber, string primaryDoctor, int weight,
+            int height, string bloodGroup, List<string> disease, List<DateTime> dateVisits)
             : base(pesel, idNumber, firstName, lastName, address, email, phoneNumber, insurance)
         {
             MedicalRecordNumber = medicalRecordNumber;
@@ -43,23 +35,24 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             Weight = weight;
             Height = height;
             BloodGroup = bloodGroup;
-            Disease = new List<string>();
-            DateVisits = new List<DateTime>();
+            Disease = disease;
+            DateVisits = dateVisits;
         }
 
-        // konstruktor kopiujacy
         public Patient(Patient p) : base(p)
         {
             MedicalRecordNumber = p.MedicalRecordNumber;
             PrimaryDoctor = p.PrimaryDoctor;
             Weight = p.Weight;
             Height = p.Height;
-            BloodGroup = p.BloodGroup; 
-            Disease.AddRange(p.Disease);
-            DateVisits.AddRange(p.DateVisits);
+            BloodGroup = p.BloodGroup;
+            var tmpDisease = new List<string>();
+            tmpDisease.AddRange(p.Disease);
+            Disease = tmpDisease;
+            var tmpDateVisits = new List<DateTime>();
+            tmpDateVisits.AddRange(p.DateVisits);
+            DateVisits = tmpDateVisits;
         }
-
-        #endregion
 
         public override List<string> GetInfo()
         {
@@ -76,6 +69,9 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         public void AddDisease(string name)
         {
+            if (!IsValidName(name, 30))
+                throw new Exception("Niepoprawna nazwa choroby.");
+
             Disease.Add(name);
         }
 
@@ -85,4 +81,3 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         }
     }
 }
-

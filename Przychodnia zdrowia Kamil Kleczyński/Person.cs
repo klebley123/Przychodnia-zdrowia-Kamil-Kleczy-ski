@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using Przychodnia_zdrowia_Kamil_Kleczynski;
 
-namespace Przychodnia_zdrowia_Kamil_Kleczyński
+namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
     public abstract class Person : Validate
     {
@@ -18,7 +17,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczyński
         public bool Insurance { get; set; }
         public string IdNumber { get; set; }
 
-        private const string _defaultPesel = "00000000000";
+        private const string DefaultPesel = "00000000000";
 
         public enum GenderEnum
         {
@@ -27,9 +26,9 @@ namespace Przychodnia_zdrowia_Kamil_Kleczyński
             Unkown
         }
 
-        public Person()
+        protected Person()
         {
-            Pesel = _defaultPesel;
+            Pesel = DefaultPesel;
             IdNumber = "BB123345";
             FirstName = "Jon";
             LastName = "Kowalski";
@@ -41,8 +40,8 @@ namespace Przychodnia_zdrowia_Kamil_Kleczyński
             Insurance = true;
         }
 
-        //konstruktor wieloargumentowy
-        public Person(string pesel, string idNumber, string firstName, string lastName, string address, string email, string phoneNumber, bool insurance)
+        protected Person(string pesel, string idNumber, string firstName, string lastName, string address, string email,
+            string phoneNumber, bool insurance)
         {
             Pesel = pesel;
             IdNumber = idNumber;
@@ -56,8 +55,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczyński
             Insurance = insurance;
         }
 
-        //konstruktor kopiujacy
-        public Person(Person person)
+        protected Person(Person person)
         {
             Pesel = person.Pesel;
             IdNumber = person.IdNumber;
@@ -71,7 +69,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczyński
             Insurance = person.Insurance;
         }
 
-        //Metoda publiczna GetInfo
         public virtual List<string> GetInfo()
         {
             return new List<string>()
@@ -91,15 +88,16 @@ namespace Przychodnia_zdrowia_Kamil_Kleczyński
 
         private DateTime? GetDateOfBirth(string pesel)
         {
-            if (!IsValidPESEL(pesel))
+            if (!IsValidPesel(pesel))
                 return null;
 
-            int[] peselInt = pesel.Select(x => int.Parse(x.ToString())).ToArray();
+            var peselInt = pesel.Select(x => int.Parse(x.ToString())).ToArray();
             var year = 1900 + peselInt[0] * 10 + peselInt[1];
             if (peselInt[2] >= 2 && peselInt[2] < 8)
             {
                 year += (int)Math.Floor((decimal)peselInt[2] / 2) * 100;
             }
+
             if (peselInt[2] >= 8)
             {
                 year -= 100;
@@ -113,10 +111,10 @@ namespace Przychodnia_zdrowia_Kamil_Kleczyński
 
         private GenderEnum GetGender(string pesel)
         {
-            if (!IsValidPESEL(pesel))
+            if (!IsValidPesel(pesel))
                 return GenderEnum.Unkown;
 
-            int[] peselInt = pesel.Select(x => int.Parse(x.ToString())).ToArray();
+            var peselInt = pesel.Select(x => int.Parse(x.ToString())).ToArray();
             return peselInt[9] % 2 == 1 ? GenderEnum.Male : GenderEnum.Female;
         }
     }

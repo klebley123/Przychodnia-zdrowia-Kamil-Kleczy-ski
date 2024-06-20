@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Przychodnia_zdrowia_Kamil_Kleczyński
+namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
     internal static class Program
     {
