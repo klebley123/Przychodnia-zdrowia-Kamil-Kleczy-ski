@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Drawing;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 
 namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
@@ -39,6 +41,32 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             return string.Empty;
         }
 
+        public string ValidatePatient(Patient patient)
+        {
+            var message = ValidatePerson(patient);
+            if (!string.IsNullOrEmpty(message))
+            {
+                return message;
+            }
+
+            if (!IsValidName(patient.MedicalRecordNumber, 10))
+            {
+                return "Niepoprawny numer kartoteki.";
+            }
+
+            if (!IsValidName(patient.PrimaryDoctor, 50))
+            {
+                return "Niepoprawne imię i nazwisko lekarza.";
+            }
+
+            if (string.IsNullOrEmpty(patient.BloodGroup))
+            {
+                return "Proszę wybrać grupę krwi.";
+            }
+
+            return string.Empty;
+        }
+
         protected bool IsValidPesel(string pesel)
         {
             int[] weights = { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
@@ -62,7 +90,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         protected bool IsValidName(string name, int length)
         {
-            return string.IsNullOrEmpty(name) || name.Length >= length;
+            return !(string.IsNullOrEmpty(name) || name.Length >= length);
         }
 
         protected bool IsValidEmail(string email)
@@ -77,6 +105,22 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             return Regex.IsMatch(number,
                 @"/^(?:(?:(?:(?:\+|00)\d{2})?[ -]?(?:(?:\(0?\d{2}\))|(?:0?\d{2})))?[ -]?(?:\d{3}[- ]?\d{2}[- ]?\d{2}|\d{2}[- ]?\d{2}[- ]?\d{3}|\d{7})|(?:(?:(?:\+|00)\d{2})?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}))$",
                 RegexOptions.IgnoreCase);
+        }
+
+        public int IsValidWeight(string w)
+        {
+            var success = int.TryParse(w, out var weight);
+            if (!success)
+                return 0;
+            return weight >= 1 && weight <= 200 ? weight : 0;
+        }
+
+        public int IsValidHeight(string h)
+        {
+            var success = int.TryParse(h, out var height);
+            if (!success)
+                return 0;
+            return height >= 50 && height <= 250 ? height : 0;
         }
 
         private static int CalculateControlSum(string input, int[] weights, int offset = 0)

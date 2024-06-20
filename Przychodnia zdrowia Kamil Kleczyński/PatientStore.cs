@@ -15,13 +15,14 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         public string Add(Patient patient)
         {
-            var message = ValidatePerson(patient);
-            if (string.IsNullOrEmpty(message))
-            {
-                Patients.Add(patient);
-                return string.Empty;
-            }
-            return message;
+            var message = ValidatePatient(patient);
+            if (!string.IsNullOrEmpty(message)) return message;
+
+            if (IsExists(patient.Pesel))
+                return $"Istnieje już pacjent o numerze PESEL: {patient.Pesel}";
+
+            Patients.Add(patient);
+            return string.Empty;
         }
 
         public List<string> GetInfoDefaultPatient()
@@ -35,12 +36,23 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             return Patients.OrderBy(x => x.FirstName).ThenBy(x => x.LastName).ToList();
         }
 
+        public int GetCount()
+        {
+            return Patients.Count;
+        }
+
         public Patient GetByPesel(string pesel)
         {
             var person = Patients.FirstOrDefault(x => x.Pesel == pesel);
             if (person == null)
                 throw new Exception($"Brak osoby o numerze PESEL:{pesel}");
             return person;
+        }
+
+        private bool IsExists(string pesel)
+        {
+            var patient = Patients.FirstOrDefault(x => x.Pesel == pesel);
+            return patient != null;
         }
     }
 }

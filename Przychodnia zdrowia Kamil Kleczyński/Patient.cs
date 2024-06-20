@@ -13,7 +13,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         public string BloodGroup { get; set; }
 
         public List<int> DiseaseId { get; set; }
-        public List<DateTime> DateVisits { get; set; }
 
         private readonly DiseaseStore _diseaseStoreStore = new DiseaseStore();
 
@@ -23,14 +22,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             PrimaryDoctor = "Marek Sowula";
             Weight = 90;
             Height = 190;
-            BloodGroup = "0RH+";
+            BloodGroup = "0 RH+";
             DiseaseId = new List<int>();
-            DateVisits = new List<DateTime>();
         }
 
         public Patient(string pesel, string idNumber, string firstName, string lastName, string address, string email,
             string phoneNumber, bool insurance, string medicalRecordNumber, string primaryDoctor, int weight,
-            int height, string bloodGroup, List<int> disease, List<DateTime> dateVisits)
+            int height, string bloodGroup, List<int> disease)
             : base(pesel, idNumber, firstName, lastName, address, email, phoneNumber, insurance)
         {
             MedicalRecordNumber = medicalRecordNumber;
@@ -39,7 +37,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             Height = height;
             BloodGroup = bloodGroup;
             DiseaseId = disease;
-            DateVisits = dateVisits;
         }
 
         public Patient(Patient p) : base(p)
@@ -53,8 +50,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             tmpDisease.AddRange(p.DiseaseId);
             DiseaseId = tmpDisease;
             var tmpDateVisits = new List<DateTime>();
-            tmpDateVisits.AddRange(p.DateVisits);
-            DateVisits = tmpDateVisits;
         }
 
         public override List<string> GetInfo()
@@ -66,7 +61,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             info.Add($"Height: {Height}");
             info.Add($"BloodGroup: {BloodGroup}");
             info.Add($"Diseases: {string.Join(", ", GetDisease(DiseaseId))}");
-            info.Add($"Date Visits: {string.Join(", ", GetDateVisits(DateVisits))}");
             return info;
         }
 
@@ -80,11 +74,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             return ids.Any()
                 ? _diseaseStoreStore.Diseases.Where(x => ids.Contains(x.Id)).Select(x => x.Name)
                 : _diseaseStoreStore.Diseases.Where(x => x.Id == 1).Select(x => x.Name);
-        }
-
-        private static IEnumerable<string> GetDateVisits(ICollection<DateTime> dateVisits)
-        {
-            return dateVisits.Any() ? dateVisits.Select(x => x.ToString("dd.MM.yyyy")) : new List<string> { "Brak" };
         }
     }
 }

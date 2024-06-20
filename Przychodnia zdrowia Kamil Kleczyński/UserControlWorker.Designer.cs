@@ -35,7 +35,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             // lstWorker
             // 
             this.lstWorker.FormattingEnabled = true;
-            this.lstWorker.Location = new System.Drawing.Point(3, 3);
+            this.lstWorker.Location = new System.Drawing.Point(20, 20);
             this.lstWorker.Name = "lstWorker";
             this.lstWorker.Size = new System.Drawing.Size(317, 225);
             this.lstWorker.TabIndex = 1;
@@ -46,7 +46,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lstWorker);
             this.Name = "UserControlWorker";
-            this.Size = new System.Drawing.Size(701, 349);
+            this.Size = new System.Drawing.Size(1010, 300);
             this.Load += new System.EventHandler(this.UserControlWorker_Load);
             this.ResumeLayout(false);
 
