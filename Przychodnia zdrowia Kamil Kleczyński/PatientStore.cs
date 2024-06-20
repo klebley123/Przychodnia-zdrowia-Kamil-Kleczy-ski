@@ -49,6 +49,12 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             return person;
         }
 
+        public Patient GetByIndex(int idx)
+        {
+            var pat = Patients[idx];
+            return pat;
+        }
+
         private bool IsExists(string pesel)
         {
             var patient = Patients.FirstOrDefault(x => x.Pesel == pesel);
