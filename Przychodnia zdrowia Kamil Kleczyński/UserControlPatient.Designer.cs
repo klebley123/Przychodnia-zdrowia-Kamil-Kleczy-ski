@@ -29,32 +29,31 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lstPatient = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // label1
+            // lstPatient
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Pacjenci";
+            this.lstPatient.FormattingEnabled = true;
+            this.lstPatient.Location = new System.Drawing.Point(3, 3);
+            this.lstPatient.Name = "lstPatient";
+            this.lstPatient.Size = new System.Drawing.Size(317, 225);
+            this.lstPatient.TabIndex = 0;
             // 
             // UserControlPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lstPatient);
             this.Name = "UserControlPatient";
             this.Size = new System.Drawing.Size(701, 349);
+            this.Load += new System.EventHandler(this.UserControlPatient_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox lstPatient;
     }
 }

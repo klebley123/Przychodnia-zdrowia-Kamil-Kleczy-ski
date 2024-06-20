@@ -48,9 +48,14 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             var info = base.GetInfo();
             info.Add($"Employee ID: {EmployeeId}");
             info.Add($"Position: {Position}");
-            info.Add($"Date of Hire: {DateOfHire}");
+            info.Add($"Date of Hire: {DateOfHire:dd.MM.yyyy}");
             info.Add($"Salary: {Salary:C}");
             return info;
+        }
+
+        public bool Equals(Worker a, Worker b)
+        {
+            return base.Equals(a, b);
         }
     }
 }

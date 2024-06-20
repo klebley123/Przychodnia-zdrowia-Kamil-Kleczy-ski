@@ -34,7 +34,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             LastName = "Kowalski";
             DateOfBirth = GetDateOfBirth(Pesel);
             Gender = GenderEnum.Male;
-            Address = "55-200 Oława, Piękna 16";
+            Address = "55-200 Oława, ul. Piękna 16";
             Email = "jkowalski@gmal.com";
             PhoneNumber = "112";
             Insurance = true;
@@ -77,13 +77,18 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 $"Seria i nr. dokumnetu: {IdNumber}",
                 $"First Name: {FirstName}",
                 $"Last Name: {LastName}",
-                $"Date of Birth: {DateOfBirth}",
+                $"Date of Birth: {DateOfBirth:dd.MM.yyyy}",
                 $"Gender: {Gender}",
                 $"Address: {Address}",
                 $"Email: {Email}",
                 $"Phone Number: {PhoneNumber}",
                 $"Insurance: {Insurance}"
             };
+        }
+
+        public bool Equals(Person a, Person b)
+        {
+            return a.Pesel.Equals(b.Pesel);
         }
 
         private DateTime? GetDateOfBirth(string pesel)
