@@ -57,6 +57,24 @@
     <Compile Include="PersonStore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControlHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlHome.Designer.cs">
+      <DependentUpon>UserControlHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlPatient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlPatient.Designer.cs">
+      <DependentUpon>UserControlPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlWorker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlWorker.Designer.cs">
+      <DependentUpon>UserControlWorker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Validate.cs" />
     <Compile Include="Worker.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -72,6 +90,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControlHome.resx">
+      <DependentUpon>UserControlHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlPatient.resx">
+      <DependentUpon>UserControlPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlWorker.resx">
+      <DependentUpon>UserControlWorker.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
