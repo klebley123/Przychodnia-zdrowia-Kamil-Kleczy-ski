@@ -36,7 +36,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(405, 126);
+            this.label1.Location = new System.Drawing.Point(404, 134);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(219, 26);
             this.label1.TabIndex = 0;
@@ -48,7 +48,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label1);
             this.Name = "UserControlHome";
-            this.Size = new System.Drawing.Size(1010, 300);
+            this.Size = new System.Drawing.Size(1010, 320);
             this.ResumeLayout(false);
             this.PerformLayout();
 

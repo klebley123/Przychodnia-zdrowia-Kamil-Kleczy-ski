@@ -46,7 +46,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lstWorker);
             this.Name = "UserControlWorker";
-            this.Size = new System.Drawing.Size(1010, 300);
+            this.Size = new System.Drawing.Size(1010, 320);
             this.Load += new System.EventHandler(this.UserControlWorker_Load);
             this.ResumeLayout(false);
 

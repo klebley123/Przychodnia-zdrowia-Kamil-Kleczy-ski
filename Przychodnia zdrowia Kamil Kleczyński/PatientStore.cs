@@ -6,7 +6,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
     public class PatientStore : Validate
     {
-        private List<Patient> Patients { get; }
+        public List<Patient> Patients { get; set; }
 
         public PatientStore(List<Patient> patients)
         {
@@ -22,6 +22,29 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 return $"Istnieje już pacjent o numerze PESEL: {patient.Pesel}";
 
             Patients.Add(patient);
+            return string.Empty;
+        }
+
+        public string Update(Patient patient)
+        {
+            var message = ValidatePatient(patient);
+            if (!string.IsNullOrEmpty(message)) return message;
+
+            var patientToUpdate = GetByPesel(patient.Pesel);
+            patientToUpdate.IdNumber = patient.IdNumber;
+            patientToUpdate.FirstName = patient.FirstName;
+            patientToUpdate.LastName = patient.LastName;
+            patientToUpdate.Address = patient.Address;
+            patientToUpdate.Email = patient.Email;
+            patientToUpdate.PhoneNumber = patient.PhoneNumber;
+            patientToUpdate.Insurance = patient.Insurance;
+            patientToUpdate.MedicalRecordNumber = patient.MedicalRecordNumber;
+            patientToUpdate.PrimaryDoctor = patient.PrimaryDoctor;
+            patientToUpdate.Weight = patient.Weight;
+            patientToUpdate.Height = patient.Height;
+            patientToUpdate.BloodGroup = patient.BloodGroup;
+            patientToUpdate.DiseaseId = patient.DiseaseId;
+
             return string.Empty;
         }
 

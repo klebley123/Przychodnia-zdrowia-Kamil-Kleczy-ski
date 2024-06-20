@@ -62,6 +62,11 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.txtMedicalRecordNumber = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.btnExportXml = new System.Windows.Forms.Button();
+            this.btnImportXML = new System.Windows.Forms.Button();
+            this.btnAnuluj = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -76,7 +81,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             // 
             // btnPrev
             // 
-            this.btnPrev.Location = new System.Drawing.Point(47, 262);
+            this.btnPrev.Location = new System.Drawing.Point(64, 262);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(75, 23);
             this.btnPrev.TabIndex = 1;
@@ -86,7 +91,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(229, 262);
+            this.btnNext.Location = new System.Drawing.Point(190, 262);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 2;
@@ -370,7 +375,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(592, 262);
+            this.btnSave.Location = new System.Drawing.Point(463, 262);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 13;
@@ -378,18 +383,73 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(382, 262);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.TabIndex = 14;
+            this.btnLoad.Text = "Wczytaj";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
+            // btnExportXml
+            // 
+            this.btnExportXml.Location = new System.Drawing.Point(909, 291);
+            this.btnExportXml.Name = "btnExportXml";
+            this.btnExportXml.Size = new System.Drawing.Size(79, 23);
+            this.btnExportXml.TabIndex = 15;
+            this.btnExportXml.Text = "Eksport XML";
+            this.btnExportXml.UseVisualStyleBackColor = true;
+            this.btnExportXml.Click += new System.EventHandler(this.btnExportXML_Click);
+            // 
+            // btnImportXML
+            // 
+            this.btnImportXML.Location = new System.Drawing.Point(824, 291);
+            this.btnImportXML.Name = "btnImportXML";
+            this.btnImportXML.Size = new System.Drawing.Size(79, 23);
+            this.btnImportXML.TabIndex = 16;
+            this.btnImportXML.Text = "Import XML";
+            this.btnImportXML.UseVisualStyleBackColor = true;
+            this.btnImportXML.Click += new System.EventHandler(this.btnImportXML_Click);
+            // 
+            // btnAnuluj
+            // 
+            this.btnAnuluj.Location = new System.Drawing.Point(544, 262);
+            this.btnAnuluj.Name = "btnAnuluj";
+            this.btnAnuluj.Size = new System.Drawing.Size(75, 23);
+            this.btnAnuluj.TabIndex = 37;
+            this.btnAnuluj.Text = "Anuluj";
+            this.btnAnuluj.UseVisualStyleBackColor = true;
+            this.btnAnuluj.Click += new System.EventHandler(this.btnAnuluj_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(463, 262);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 38;
+            this.btnUpdate.Text = "Aktualizuj";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // UserControlPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.btnAnuluj);
+            this.Controls.Add(this.btnImportXML);
+            this.Controls.Add(this.btnExportXml);
+            this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrev);
             this.Controls.Add(this.lstPatient);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnUpdate);
             this.Name = "UserControlPatient";
-            this.Size = new System.Drawing.Size(1010, 300);
+            this.Size = new System.Drawing.Size(1010, 320);
             this.Load += new System.EventHandler(this.UserControlPatient_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -434,5 +494,10 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckedListBox chkDisease;
+        private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.Button btnExportXml;
+        private System.Windows.Forms.Button btnImportXML;
+        private System.Windows.Forms.Button btnAnuluj;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
