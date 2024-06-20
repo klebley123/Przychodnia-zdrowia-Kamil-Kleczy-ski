@@ -64,11 +64,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             return info;
         }
 
-        public bool Equals(Patient a, Patient b)
-        {
-            return base.Equals(a, b);
-        }
-
         private IEnumerable<string> GetDisease(ICollection<int> ids)
         {
             return ids.Any()

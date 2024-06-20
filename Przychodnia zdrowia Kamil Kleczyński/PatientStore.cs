@@ -6,7 +6,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
     public class PatientStore : Validate
     {
-        public List<Patient> Patients { get; set; }
+        private List<Patient> Patients { get; set; }
 
         public PatientStore(List<Patient> patients)
         {
@@ -48,6 +48,11 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             return string.Empty;
         }
 
+        public void UpdateList(List<Patient> patients)
+        {
+            Patients = patients;
+        }
+
         public List<string> GetInfoDefaultPatient()
         {
             var patient = new Patient();
@@ -80,6 +85,11 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         private bool IsExists(string pesel)
         {
+            //foreach (var item in Patients)
+            //{
+            //    if (item.Equals(pesel))
+            //        return true;
+            //}
             var patient = Patients.FirstOrDefault(x => x.Pesel == pesel);
             return patient != null;
         }

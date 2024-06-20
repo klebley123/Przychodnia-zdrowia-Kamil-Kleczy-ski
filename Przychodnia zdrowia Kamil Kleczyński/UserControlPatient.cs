@@ -43,6 +43,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
+            ClearForm();
             var patient = _patientStore.GetByIndex(_currentPatientsIndex);
             txtPesel.Text = patient.Pesel;
             txtIdNumber.Text = patient.IdNumber;
@@ -57,9 +58,20 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             txtWeight.Text = patient.Weight.ToString();
             txtHeight.Text = patient.Height.ToString();
             cmbBloodGroup.Text = patient.BloodGroup;
+            var ids = new List<int>();
             foreach (var id in patient.DiseaseId)
             {
-                chkDisease.SetItemChecked(id + 1, true);
+                var name = _diseaseStoreStore.GetById(id);
+                foreach (var item in chkDisease.Items)
+                {
+                    if ((string)item == name)
+                        ids.Add(chkDisease.Items.IndexOf(name));
+                }
+
+                foreach (var idx in ids)
+                {
+                    chkDisease.SetItemChecked(idx, true);
+                }
             }
 
             txtPesel.Enabled = false;
@@ -163,7 +175,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                         }
                     }
 
-                    _patientStore.Patients = patients;
+                    _patientStore.UpdateList(patients);
                     LoadFirstPatient();
                 }
             }
@@ -276,7 +288,10 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             txtHeight.Clear();
             cmbBloodGroup.SelectedIndex = -1;
             cmbBloodGroup.SelectedText = string.Empty;
-            chkDisease.ClearSelected();
+            for (var i = 0; i < chkDisease.Items.Count; i++)
+            {
+                chkDisease.SetItemChecked(i, false);
+            }
 
             txtPesel.Enabled = true;
             btnUpdate.Visible = false;

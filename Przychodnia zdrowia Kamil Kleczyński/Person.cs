@@ -4,6 +4,13 @@ using System.Collections.Generic;
 
 namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
+    public enum GenderEnum
+    {
+        Male,
+        Female,
+        Unkown
+    }
+
     public abstract class Person : Validate
     {
         public string Pesel { get; set; }
@@ -18,13 +25,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         public string IdNumber { get; set; }
 
         private const string DefaultPesel = "00000000000";
-
-        public enum GenderEnum
-        {
-            Male,
-            Female,
-            Unkown
-        }
 
         protected Person()
         {
@@ -43,26 +43,29 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         protected Person(string pesel, string idNumber, string firstName, string lastName, string address, string email,
             string phoneNumber, bool insurance)
         {
-            Pesel = pesel;
+            var p = IsValidPesel(pesel) ? pesel : DefaultPesel;
+            Pesel = p;
             IdNumber = idNumber;
             FirstName = firstName;
             LastName = lastName;
-            DateOfBirth = GetDateOfBirth(Pesel);
-            Gender = GetGender(Pesel);
+            DateOfBirth = GetDateOfBirth(p);
+            Gender = GetGender(p);
             Address = address;
             Email = email;
             PhoneNumber = phoneNumber;
             Insurance = insurance;
         }
 
+
         protected Person(Person person)
         {
-            Pesel = person.Pesel;
+            var p = IsValidPesel(person.Pesel) ? person.Pesel : DefaultPesel;
+            Pesel = p;
             IdNumber = person.IdNumber;
             FirstName = person.FirstName;
             LastName = person.LastName;
-            DateOfBirth = person.DateOfBirth;
-            Gender = person.Gender;
+            DateOfBirth = GetDateOfBirth(p);
+            Gender = GetGender(p);
             Address = person.Address;
             Email = person.Email;
             PhoneNumber = person.PhoneNumber;
@@ -86,9 +89,9 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             };
         }
 
-        public bool Equals(Person a, Person b)
+        public virtual bool Equals(string pesel)
         {
-            return a.Pesel.Equals(b.Pesel);
+            return Pesel.Equals(pesel);
         }
 
         private DateTime? GetDateOfBirth(string pesel)

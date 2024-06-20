@@ -28,5 +28,10 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 new Disease { Id = 7, Name = "Depresja" }
             });
         }
+
+        public string GetById(int id)
+        {
+            return Diseases.Find(x => x.Id == id).Name;
+        }
     }
 }
