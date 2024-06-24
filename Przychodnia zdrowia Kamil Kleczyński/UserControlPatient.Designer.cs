@@ -63,8 +63,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.label8 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
-            this.btnExportXml = new System.Windows.Forms.Button();
-            this.btnImportXML = new System.Windows.Forms.Button();
             this.btnAnuluj = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -259,7 +257,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.txtMedicalRecordNumber);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Location = new System.Drawing.Point(683, 13);
+            this.groupBox2.Location = new System.Drawing.Point(690, 13);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(317, 272);
             this.groupBox2.TabIndex = 12;
@@ -393,26 +391,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // btnExportXml
-            // 
-            this.btnExportXml.Location = new System.Drawing.Point(909, 291);
-            this.btnExportXml.Name = "btnExportXml";
-            this.btnExportXml.Size = new System.Drawing.Size(79, 23);
-            this.btnExportXml.TabIndex = 15;
-            this.btnExportXml.Text = "Eksport XML";
-            this.btnExportXml.UseVisualStyleBackColor = true;
-            this.btnExportXml.Click += new System.EventHandler(this.btnExportXML_Click);
-            // 
-            // btnImportXML
-            // 
-            this.btnImportXML.Location = new System.Drawing.Point(824, 291);
-            this.btnImportXML.Name = "btnImportXML";
-            this.btnImportXML.Size = new System.Drawing.Size(79, 23);
-            this.btnImportXML.TabIndex = 16;
-            this.btnImportXML.Text = "Import XML";
-            this.btnImportXML.UseVisualStyleBackColor = true;
-            this.btnImportXML.Click += new System.EventHandler(this.btnImportXML_Click);
-            // 
             // btnAnuluj
             // 
             this.btnAnuluj.Location = new System.Drawing.Point(544, 262);
@@ -438,8 +416,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnAnuluj);
-            this.Controls.Add(this.btnImportXML);
-            this.Controls.Add(this.btnExportXml);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnNext);
@@ -449,7 +425,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnUpdate);
             this.Name = "UserControlPatient";
-            this.Size = new System.Drawing.Size(1010, 320);
+            this.Size = new System.Drawing.Size(1013, 291);
             this.Load += new System.EventHandler(this.UserControlPatient_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -479,8 +455,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtFirstName;
-        private System.Windows.Forms.TextBox txtPesel;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtMedicalRecordNumber;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtPrimaryDoctor;
@@ -495,9 +469,9 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckedListBox chkDisease;
         private System.Windows.Forms.Button btnLoad;
-        private System.Windows.Forms.Button btnExportXml;
-        private System.Windows.Forms.Button btnImportXML;
         private System.Windows.Forms.Button btnAnuluj;
         private System.Windows.Forms.Button btnUpdate;
+        protected System.Windows.Forms.TextBox txtPesel;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

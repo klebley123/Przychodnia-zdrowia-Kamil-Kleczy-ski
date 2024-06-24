@@ -40,8 +40,8 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             AddListBox(patient);
             SetEnableButtons();
         }
-
-        private void btnLoad_Click(object sender, EventArgs e)
+        //private
+        protected virtual void btnLoad_Click(object sender, EventArgs e)
         {
             ClearForm();
             var patient = _patientStore.GetByIndex(_currentPatientsIndex);
@@ -151,35 +151,35 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             ClearForm();
         }
 
-        private void btnImportXML_Click(object sender, EventArgs e)
-        {
-            var openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = @"Import pacjentów";
-            openFileDialog.Filter = @"XML Files (*.xml)|*.xml";
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                var xs = new XmlSerializer(typeof(Patient));
-                using (var stream = new StreamReader(openFileDialog.FileName))
-                {
-                    var xmlDoc = new XmlDocument();
-                    xmlDoc.Load(stream);
-                    var xmlPatientList = xmlDoc.GetElementsByTagName("Patient");
-                    if (xmlPatientList.Count == 0) return;
+        //private void btnImportXML_Click(object sender, EventArgs e)
+        //{
+        //    var openFileDialog = new OpenFileDialog();
+        //    openFileDialog.Title = @"Import pacjentów";
+        //    openFileDialog.Filter = @"XML Files (*.xml)|*.xml";
+        //    if (openFileDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        var xs = new XmlSerializer(typeof(Patient));
+        //        using (var stream = new StreamReader(openFileDialog.FileName))
+        //        {
+        //            var xmlDoc = new XmlDocument();
+        //            xmlDoc.Load(stream);
+        //            var xmlPatientList = xmlDoc.GetElementsByTagName("Patient");
+        //            if (xmlPatientList.Count == 0) return;
 
-                    var patients = new List<Patient>();
-                    foreach (XmlNode xmlItem in xmlPatientList)
-                    {
-                        using (XmlReader reader = new XmlNodeReader(xmlItem))
-                        {
-                            patients.Add((Patient)xs.Deserialize(reader));
-                        }
-                    }
+        //            var patients = new List<Patient>();
+        //            foreach (XmlNode xmlItem in xmlPatientList)
+        //            {
+        //                using (XmlReader reader = new XmlNodeReader(xmlItem))
+        //                {
+        //                    patients.Add((Patient)xs.Deserialize(reader));
+        //                }
+        //            }
 
-                    _patientStore.UpdateList(patients);
-                    LoadFirstPatient();
-                }
-            }
-        }
+        //            _patientStore.UpdateList(patients);
+        //            LoadFirstPatient();
+        //        }
+        //    }
+        //}
 
         private void btnExportXML_Click(object sender, EventArgs e)
         {
@@ -233,7 +233,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             {
                 btnPrev.Enabled = false;
                 btnNext.Enabled = false;
-                btnExportXml.Enabled = false;
+                //btnExportXml.Enabled = false;
                 btnLoad.Enabled = false;
             }
             else
@@ -254,7 +254,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
             if (patientCount > 0)
             {
-                btnExportXml.Enabled = true;
+                //btnExportXml.Enabled = true;
                 btnLoad.Enabled = true;
             }
         }

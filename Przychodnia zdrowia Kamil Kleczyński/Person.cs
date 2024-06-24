@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
@@ -11,20 +12,35 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         Unkown
     }
 
+    [XmlInclude(typeof(Patient))]
+    [XmlInclude(typeof(Worker))]
+
     public abstract class Person : Validate
     {
-        public string Pesel { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime? DateOfBirth { get; set; }
-        public GenderEnum Gender { get; set; }
-        public string Address { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-        public bool Insurance { get; set; }
-        public string IdNumber { get; set; }
 
         private const string DefaultPesel = "00000000000";
+
+        private string _pesel;
+        private string _firstName;
+        private string _lastName;
+        private DateTime? _dateOfBirth;
+        private GenderEnum _gender;
+        private string _address;
+        private string _eMail;
+        private string _phoneNumber;
+        private bool _insurance;
+        private string _iDNumber;
+
+        public string Pesel { get => _pesel; set => _pesel = value; }
+        public string FirstName { get => _firstName; set => _firstName = value; }
+        public string LastName { get => _lastName; set => _lastName = value; }
+        public DateTime? DateOfBirth { get => _dateOfBirth; set => _dateOfBirth = value; }
+        public GenderEnum Gender { get => _gender; set => _gender = value; }
+        public string Address { get => _address; set => _address = value; }
+        public string Email { get => _eMail; set => _eMail = value; }
+        public string PhoneNumber { get => _phoneNumber; set => _phoneNumber = value; }
+        public bool Insurance { get => _insurance; set => _insurance = value; }
+        public string IdNumber { get => _iDNumber; set => _iDNumber = value; }
 
         protected Person()
         {

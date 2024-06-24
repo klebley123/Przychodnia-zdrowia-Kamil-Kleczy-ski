@@ -66,6 +66,31 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
             return string.Empty;
         }
+        public string ValidateWorker(Worker worker)
+        {
+            var message = ValidatePerson(worker);
+            if (!string.IsNullOrEmpty(message))
+            {
+                return message;
+            }
+
+            if (!IsValidPosition(worker.Position, 10))
+            {
+                return "Błędna nazwa stanowiska.";
+            }
+            //TO DO 
+            //if (!IsValidName(worker.DateOfHire.value, 50))
+            //{
+            //    return "Niepoprawne imię i nazwisko lekarza.";
+            //}
+
+            //if (string.IsNullOrEmpty(patient.BloodGroup);
+            //{
+            //    return "Proszę wybrać grupę krwi.";
+            //}
+
+            return string.Empty;
+        }
 
         protected bool IsValidPesel(string pesel)
         {
@@ -86,6 +111,11 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             }
 
             return result;
+        }
+
+        protected bool IsValidPosition(string position, int lenght)
+        {
+            return !(string.IsNullOrEmpty(position) || position.Length >= lenght);
         }
 
         protected bool IsValidName(string name, int length)
@@ -113,6 +143,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             if (!success)
                 return 0;
             return weight >= 1 && weight <= 200 ? weight : 0;
+        }
+        public decimal IsValidSalary(string s)
+        {
+            var success = int.TryParse(s, out var salary);
+                if(!success)
+                return 0;
+            return salary >= 1m && salary <= 30000m ? salary : 0;
         }
 
         public int IsValidHeight(string h)

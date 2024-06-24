@@ -70,5 +70,10 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 ? _diseaseStoreStore.Diseases.Where(x => ids.Contains(x.Id)).Select(x => x.Name)
                 : _diseaseStoreStore.Diseases.Where(x => x.Id == 1).Select(x => x.Name);
         }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
     }
 }

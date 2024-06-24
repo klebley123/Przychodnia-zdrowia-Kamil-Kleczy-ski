@@ -79,8 +79,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         public Patient GetByIndex(int idx)
         {
-            var pat = Patients[idx];
-            return pat;
+            return Patients[idx];
         }
 
         private bool IsExists(string pesel)

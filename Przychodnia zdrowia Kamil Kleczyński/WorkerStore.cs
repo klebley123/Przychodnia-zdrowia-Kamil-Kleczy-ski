@@ -25,10 +25,30 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             return message;
         }
 
+        public string Update(Worker worker)
+        {
+            var message = ValidateWorker(worker);
+            if (!string.IsNullOrEmpty(message)) return message;
+
+            var workerToUpdate = GetByPesel(worker.Pesel);
+            workerToUpdate.Position = worker.Position;
+            workerToUpdate.Position = worker.Position;
+            workerToUpdate.Position = worker.Position;
+            workerToUpdate.Position = worker.Position;
+            workerToUpdate.Position = worker.Position;
+            workerToUpdate.Position = worker.Position;
+            workerToUpdate.Position = worker.Position;
+            workerToUpdate.Position = worker.Position;
+            workerToUpdate.DateOfHire = worker.DateOfHire;
+            workerToUpdate.WorkerId = worker.WorkerId;
+            workerToUpdate.Salary = worker.Salary;
+
+            return string.Empty;
+        }
+
         public List<string> GetInfoDefaultWorker()
         {
-            var worker = new Worker();
-            return worker.GetInfo();
+            return new Worker().GetInfo();
         }
 
         public List<Worker> GetAll()
@@ -42,6 +62,16 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             if (person == null)
                 throw new Exception($"Brak osoby o numerze PESEL:{pesel}");
             return person;
+        }
+
+        public Worker GetByIndex(int idx)
+        {
+            return Workers[idx];
+        }
+
+        public int GetCount()
+        {
+            return Workers.Count;
         }
     }
 }
