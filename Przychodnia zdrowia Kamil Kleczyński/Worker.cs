@@ -57,5 +57,22 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             info.Add($"Salary: {Salary:C}");
             return info;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (base.Equals(obj))
+            {
+                return true;
+            }
+            else if (obj is Person)
+            {
+                Person other = (Person)obj;
+                return this.Pesel == other.Pesel;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

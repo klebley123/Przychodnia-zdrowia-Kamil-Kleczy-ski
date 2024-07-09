@@ -73,7 +73,19 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            if (base.Equals(obj))
+            {
+                return true;
+            }
+            else if(obj is Person)
+            {
+                Person other = (Person)obj;
+                return this.Pesel == other.Pesel;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

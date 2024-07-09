@@ -132,9 +132,11 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         protected bool IsValidPhoneNumber(string number)
         {
-            return Regex.IsMatch(number,
-                @"/^(?:(?:(?:(?:\+|00)\d{2})?[ -]?(?:(?:\(0?\d{2}\))|(?:0?\d{2})))?[ -]?(?:\d{3}[- ]?\d{2}[- ]?\d{2}|\d{2}[- ]?\d{2}[- ]?\d{3}|\d{7})|(?:(?:(?:\+|00)\d{2})?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}))$",
-                RegexOptions.IgnoreCase);
+            //return Regex.IsMatch(number,
+            // @"/^(?:(?:(?:(?:\+|00)\d{2})?[ -]?(?:(?:\(0?\d{2}\))|(?:0?\d{2})))?[ -]?(?:\d{3}[- ]?\d{2}[- ]?\d{2}|\d{2}[- ]?\d{2}[- ]?\d{3}|\d{7})|(?:(?:(?:\+|00)\d{2})?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}))$",
+            // RegexOptions.IgnoreCase);
+
+            return Regex.IsMatch(number, "^[0-9]*$");
         }
 
         public int IsValidWeight(string w)

@@ -15,8 +15,12 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             if (_instance == null) _instance = new PersonStore();
             return _instance;
         }
+
+        public List<Person> People { get; set; }
+
         private PersonStore()
         {
+            People = new List<Person>();
         }
     }
 }
