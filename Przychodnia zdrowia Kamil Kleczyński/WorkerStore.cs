@@ -53,12 +53,21 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         public List<Worker> GetAll()
         {
-            return Workers.OrderBy(x => x.FirstName).ThenBy(x => x.LastName).ToList();
+            //return Workers.OrderBy(x => x.FirstName).ThenBy(x => x.LastName).ToList();
+            return PersonStore.Instance().People.Where(x=>x is Worker)
+                .OrderBy(x=>x.FirstName).ThenBy(x=>x.LastName).Select(x=>(Worker)x).ToList();
+        }
+
+        public int GetCount()
+        {
+            //return Workers.Count;
+            return GetAll().Count; 
         }
 
         public Worker GetByPesel(string pesel)
         {
-            var person = Workers.FirstOrDefault(x => x.Pesel == pesel);
+            //var person = Workers.FirstOrDefault(x => x.Pesel == pesel);
+            var person = GetAll().FirstOrDefault(x => x.Pesel == pesel);
             if (person == null)
                 throw new Exception($"Brak osoby o numerze PESEL:{pesel}");
             return person;
@@ -66,12 +75,18 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         public Worker GetByIndex(int idx)
         {
-            return Workers[idx];
+            //return Workers[idx];
+            return GetAll()[idx];
         }
 
-        public int GetCount()
+        private bool IsExists(Worker worker)
         {
-            return Workers.Count;
+            foreach(var item in GetAll()) // Workers
+            {
+                if(item.Equals(worker))
+                    return true;
+            }
+            return false;
         }
     }
 }

@@ -309,6 +309,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.buttonPrevious.TabIndex = 4;
             this.buttonPrevious.Text = "Poprzedni";
             this.buttonPrevious.UseVisualStyleBackColor = true;
+            this.buttonPrevious.Click += new System.EventHandler(this.buttonPrevious_Click);
             // 
             // buttonNext
             // 
@@ -318,6 +319,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.buttonNext.TabIndex = 5;
             this.buttonNext.Text = "Następny";
             this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
             // buttonLoad
             // 

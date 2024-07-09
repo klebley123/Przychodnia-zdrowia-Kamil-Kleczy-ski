@@ -171,5 +171,21 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             AddListBox(worker);
             ClearForm();
         }
+
+        private void buttonPrevious_Click(object sender, EventArgs e)
+        {
+            _currentWorkersIndex--;
+            var worker = _workerStore.GetByIndex(_currentWorkersIndex);
+            AddListBox(worker);
+            SetEnableButtons();
+        }
+
+        private void buttonNext_Click(object sender, EventArgs e)
+        {
+            _currentWorkersIndex++;
+            var worker = _workerStore.GetByIndex(_currentWorkersIndex);
+            AddListBox(worker);
+            SetEnableButtons();
+        }
     }
 }

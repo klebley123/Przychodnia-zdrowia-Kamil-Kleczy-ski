@@ -16,5 +16,15 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         {
             InitializeComponent();
         }
+
+        private void buttonPrevious_Click(object sender, EventArgs e)
+        {
+            var person = 
+        }
+
+        private void buttonNext_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
