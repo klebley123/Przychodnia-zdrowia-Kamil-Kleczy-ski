@@ -30,8 +30,8 @@
         {
             this.buttonPrevious = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.listPersons = new System.Windows.Forms.ListBox();
+            this.buttonView = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonPrevious
@@ -54,29 +54,30 @@
             this.buttonNext.UseVisualStyleBackColor = true;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
-            // listBox1
+            // listPersons
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(16, 14);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(317, 225);
-            this.listBox1.TabIndex = 2;
+            this.listPersons.FormattingEnabled = true;
+            this.listPersons.Location = new System.Drawing.Point(16, 14);
+            this.listPersons.Name = "listPersons";
+            this.listPersons.Size = new System.Drawing.Size(317, 225);
+            this.listPersons.TabIndex = 2;
             // 
-            // button1
+            // buttonView
             // 
-            this.button1.Location = new System.Drawing.Point(133, 252);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonView.Location = new System.Drawing.Point(133, 252);
+            this.buttonView.Name = "buttonView";
+            this.buttonView.Size = new System.Drawing.Size(75, 23);
+            this.buttonView.TabIndex = 3;
+            this.buttonView.Text = "Podgląd";
+            this.buttonView.UseVisualStyleBackColor = true;
+            this.buttonView.Click += new System.EventHandler(this.buttonView_Click);
             // 
             // UserControlXMLAndViewing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.buttonView);
+            this.Controls.Add(this.listPersons);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonPrevious);
             this.Name = "UserControlXMLAndViewing";
@@ -89,7 +90,7 @@
 
         private System.Windows.Forms.Button buttonPrevious;
         private System.Windows.Forms.Button buttonNext;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox listPersons;
+        private System.Windows.Forms.Button buttonView;
     }
 }
