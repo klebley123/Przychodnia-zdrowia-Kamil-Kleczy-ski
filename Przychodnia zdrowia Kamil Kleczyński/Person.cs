@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Xml.Serialization;
 
 namespace Przychodnia_zdrowia_Kamil_Kleczynski
@@ -96,6 +98,34 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         {
             get => _photo;
             set => _photo = value;
+        }
+
+        [XmlElement("Photo")]
+        public byte[] LargeIconSerialized
+        {
+            get
+            { // serialize
+                if (Photo == null) return null;
+                using (var ms = new MemoryStream())
+                {
+                    Photo.Save(ms, ImageFormat.Bmp);
+                    return ms.ToArray();
+                }
+            }
+            set
+            {// deserialize
+                if (value == null)
+                {
+                    Photo = null;
+                }
+                else
+                {
+                    using (var ms = new MemoryStream(value))
+                    {
+                        Photo = new Bitmap(ms);
+                    }
+                }
+            }
         }
 
         protected Person()
