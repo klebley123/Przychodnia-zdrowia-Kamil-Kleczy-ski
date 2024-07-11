@@ -101,7 +101,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         }
 
         [XmlElement("Photo")]
-        public byte[] LargeIconSerialized
+        public byte[] PhotoSerialized
         {
             get
             { // serialize
