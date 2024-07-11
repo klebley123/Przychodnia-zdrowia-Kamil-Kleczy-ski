@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace Przychodnia_zdrowia_Kamil_Kleczynski
@@ -52,15 +53,17 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             var tmpDateVisits = new List<DateTime>();
         }
 
-        public override List<string> GetInfo()
+        public override (List<string>, Bitmap) GetInfo()
         {
             var info = base.GetInfo();
-            info.Add($"Medical Record Number: {MedicalRecordNumber}");
-            info.Add($"Primary Doctor: {PrimaryDoctor}");
-            info.Add($"Weight: {Weight}");
-            info.Add($"Height: {Height}");
-            info.Add($"BloodGroup: {BloodGroup}");
-            info.Add($"Diseases: {string.Join(", ", GetDisease(DiseaseId))}");
+            info.Item1.Add($"Medical Record Number: {MedicalRecordNumber}");
+            info.Item1.Add($"Primary Doctor: {PrimaryDoctor}");
+            info.Item1.Add($"Weight: {Weight}");
+            info.Item1.Add($"Height: {Height}");
+            info.Item1.Add($"BloodGroup: {BloodGroup}");
+            info.Item1.Add($"Diseases: {string.Join(", ", GetDisease(DiseaseId))}");
+            info.Item2 = Photo;
+
             return info;
         }
 

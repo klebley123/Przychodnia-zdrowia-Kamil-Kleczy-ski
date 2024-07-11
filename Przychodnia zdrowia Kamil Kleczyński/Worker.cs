@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
@@ -48,13 +49,14 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         #endregion
 
-        public override List<string> GetInfo()
+        public override (List<string>, Bitmap) GetInfo()
         {
             var info = base.GetInfo();
-            info.Add($"Position: {Position}");
-            info.Add($"Employee ID: {WorkerId}");
-            info.Add($"Date of Hire: {DateOfHire:dd.MM.yyyy}");
-            info.Add($"Salary: {Salary:C}");
+            info.Item1.Add($"Position: {Position}");
+            info.Item1.Add($"Employee ID: {WorkerId}");
+            info.Item1.Add($"Date of Hire: {DateOfHire:dd.MM.yyyy}");
+            info.Item1.Add($"Salary: {Salary:C}");
+            info.Item2 = Photo;
             return info;
         }
 

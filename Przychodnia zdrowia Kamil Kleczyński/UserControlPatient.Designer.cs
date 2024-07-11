@@ -65,21 +65,23 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.btnAnuluj = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lstPatient
             // 
             this.lstPatient.FormattingEnabled = true;
-            this.lstPatient.Location = new System.Drawing.Point(20, 20);
+            this.lstPatient.Location = new System.Drawing.Point(20, 114);
             this.lstPatient.Name = "lstPatient";
             this.lstPatient.Size = new System.Drawing.Size(317, 225);
             this.lstPatient.TabIndex = 0;
             // 
             // btnPrev
             // 
-            this.btnPrev.Location = new System.Drawing.Point(64, 262);
+            this.btnPrev.Location = new System.Drawing.Point(64, 356);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(75, 23);
             this.btnPrev.TabIndex = 1;
@@ -89,7 +91,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(190, 262);
+            this.btnNext.Location = new System.Drawing.Point(190, 356);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 2;
@@ -412,10 +414,19 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(20, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 102);
+            this.pictureBox1.TabIndex = 40;
+            this.pictureBox1.TabStop = false;
+            // 
             // UserControlPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnAnuluj);
             this.Controls.Add(this.groupBox1);
@@ -426,12 +437,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnUpdate);
             this.Name = "UserControlPatient";
-            this.Size = new System.Drawing.Size(1013, 291);
+            this.Size = new System.Drawing.Size(1013, 390);
             this.Load += new System.EventHandler(this.UserControlPatient_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -474,5 +486,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         protected System.Windows.Forms.TextBox txtPesel;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

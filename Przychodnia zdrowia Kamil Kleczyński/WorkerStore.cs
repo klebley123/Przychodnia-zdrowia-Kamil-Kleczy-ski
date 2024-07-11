@@ -10,16 +10,28 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         {
         }
 
-        public string Add(Worker worker)
+        //public string Add(Worker worker)
+        //{
+        //    var message = ValidateWorker(worker);
+        //    if (!string.IsNullOrEmpty(message)) return message;
+
+        //    if (IsExists(worker))
+        //        return $"Istnieje już człowiek o numerze PESEL: {worker.Pesel}";
+
+        //    PersonStore.Instance().People.Add(worker);
+        //    return string.Empty;
+        //}
+
+        public void Add(Worker worker)
         {
             var message = ValidateWorker(worker);
-            if (!string.IsNullOrEmpty(message)) return message;
+            if (!string.IsNullOrEmpty(message))
+                throw new Exception(message);
 
             if (IsExists(worker))
-                return $"Istnieje już człowiek o numerze PESEL: {worker.Pesel}";
+                throw new Exception($"Istnieje już człowiek o numerze PESEL: {worker.Pesel}");
 
             PersonStore.Instance().People.Add(worker);
-            return string.Empty;
         }
 
         public string Update(Worker worker)

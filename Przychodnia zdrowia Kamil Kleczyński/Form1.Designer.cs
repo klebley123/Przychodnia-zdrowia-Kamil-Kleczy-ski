@@ -87,7 +87,7 @@
             // 
             this.panelContainer.Location = new System.Drawing.Point(0, 27);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1010, 291);
+            this.panelContainer.Size = new System.Drawing.Size(1010, 390);
             this.panelContainer.TabIndex = 0;
             // 
             // btnImportXML
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 390);
+            this.ClientSize = new System.Drawing.Size(1014, 424);
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Xml.Serialization;
 
 namespace Przychodnia_zdrowia_Kamil_Kleczynski
@@ -14,10 +15,8 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
     [XmlInclude(typeof(Patient))]
     [XmlInclude(typeof(Worker))]
-
     public abstract class Person : Validate
     {
-
         private const string DefaultPesel = "00000000000";
 
         private string _pesel;
@@ -30,17 +29,73 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private string _phoneNumber;
         private bool _insurance;
         private string _iDNumber;
+        private Bitmap _photo;
 
-        public string Pesel { get => _pesel; set => _pesel = value; }
-        public string FirstName { get => _firstName; set => _firstName = value; }
-        public string LastName { get => _lastName; set => _lastName = value; }
-        public DateTime? DateOfBirth { get => _dateOfBirth; set => _dateOfBirth = value; }
-        public GenderEnum Gender { get => _gender; set => _gender = value; }
-        public string Address { get => _address; set => _address = value; }
-        public string Email { get => _eMail; set => _eMail = value; }
-        public string PhoneNumber { get => _phoneNumber; set => _phoneNumber = value; }
-        public bool Insurance { get => _insurance; set => _insurance = value; }
-        public string IdNumber { get => _iDNumber; set => _iDNumber = value; }
+        public string Pesel
+        {
+            get => _pesel;
+            set => _pesel = value;
+        }
+
+        public string FirstName
+        {
+            get => _firstName;
+            set => _firstName = value;
+        }
+
+        public string LastName
+        {
+            get => _lastName;
+            set => _lastName = value;
+        }
+
+        public DateTime? DateOfBirth
+        {
+            get => _dateOfBirth;
+            set => _dateOfBirth = value;
+        }
+
+        public GenderEnum Gender
+        {
+            get => _gender;
+            set => _gender = value;
+        }
+
+        public string Address
+        {
+            get => _address;
+            set => _address = value;
+        }
+
+        public string Email
+        {
+            get => _eMail;
+            set => _eMail = value;
+        }
+
+        public string PhoneNumber
+        {
+            get => _phoneNumber;
+            set => _phoneNumber = value;
+        }
+
+        public bool Insurance
+        {
+            get => _insurance;
+            set => _insurance = value;
+        }
+
+        public string IdNumber
+        {
+            get => _iDNumber;
+            set => _iDNumber = value;
+        }
+
+        public Bitmap Photo
+        {
+            get => _photo;
+            set => _photo = value;
+        }
 
         protected Person()
         {
@@ -88,9 +143,9 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             Insurance = person.Insurance;
         }
 
-        public virtual List<string> GetInfo()
+        public virtual (List<string>, Bitmap) GetInfo()
         {
-            return new List<string>()
+            var lista = new List<string>()
             {
                 $"Pesel: {Pesel}",
                 $"Seria i nr. dokumnetu: {IdNumber}",
@@ -103,6 +158,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 $"Phone Number: {PhoneNumber}",
                 $"Insurance: {Insurance}"
             };
+            return (lista, Photo);
         }
 
         public virtual bool Equals(string pesel)

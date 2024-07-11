@@ -31,6 +31,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         {
             this.listWorker = new System.Windows.Forms.ListBox();
             this.groupBoxPersonData = new System.Windows.Forms.GroupBox();
+            this.checkBoxInsuirance = new System.Windows.Forms.CheckBox();
             this.labelIdNum = new System.Windows.Forms.Label();
             this.labelTelNum = new System.Windows.Forms.Label();
             this.labelEMail = new System.Windows.Forms.Label();
@@ -59,16 +60,17 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
-            this.checkBoxInsuirance = new System.Windows.Forms.CheckBox();
             this.btnLoad = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBoxPersonData.SuspendLayout();
             this.groupBoxWorkerData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // listWorker
             // 
             this.listWorker.FormattingEnabled = true;
-            this.listWorker.Location = new System.Drawing.Point(20, 20);
+            this.listWorker.Location = new System.Drawing.Point(17, 122);
             this.listWorker.Name = "listWorker";
             this.listWorker.Size = new System.Drawing.Size(317, 225);
             this.listWorker.TabIndex = 1;
@@ -96,6 +98,16 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.groupBoxPersonData.TabIndex = 2;
             this.groupBoxPersonData.TabStop = false;
             this.groupBoxPersonData.Text = "Dane osobowe";
+            // 
+            // checkBoxInsuirance
+            // 
+            this.checkBoxInsuirance.AutoSize = true;
+            this.checkBoxInsuirance.Location = new System.Drawing.Point(96, 203);
+            this.checkBoxInsuirance.Name = "checkBoxInsuirance";
+            this.checkBoxInsuirance.Size = new System.Drawing.Size(93, 17);
+            this.checkBoxInsuirance.TabIndex = 19;
+            this.checkBoxInsuirance.Text = "Ubezpieczony";
+            this.checkBoxInsuirance.UseVisualStyleBackColor = true;
             // 
             // labelIdNum
             // 
@@ -293,7 +305,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             // 
             // buttonPrevious
             // 
-            this.buttonPrevious.Location = new System.Drawing.Point(38, 251);
+            this.buttonPrevious.Location = new System.Drawing.Point(35, 353);
             this.buttonPrevious.Name = "buttonPrevious";
             this.buttonPrevious.Size = new System.Drawing.Size(75, 23);
             this.buttonPrevious.TabIndex = 4;
@@ -303,7 +315,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             // 
             // buttonNext
             // 
-            this.buttonNext.Location = new System.Drawing.Point(242, 251);
+            this.buttonNext.Location = new System.Drawing.Point(239, 353);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(75, 23);
             this.buttonNext.TabIndex = 5;
@@ -341,16 +353,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.buttonUpdate.UseVisualStyleBackColor = true;
             this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
-            // checkBoxInsuirance
-            // 
-            this.checkBoxInsuirance.AutoSize = true;
-            this.checkBoxInsuirance.Location = new System.Drawing.Point(96, 203);
-            this.checkBoxInsuirance.Name = "checkBoxInsuirance";
-            this.checkBoxInsuirance.Size = new System.Drawing.Size(93, 17);
-            this.checkBoxInsuirance.TabIndex = 19;
-            this.checkBoxInsuirance.Text = "Ubezpieczony";
-            this.checkBoxInsuirance.UseVisualStyleBackColor = true;
-            // 
             // btnLoad
             // 
             this.btnLoad.Enabled = false;
@@ -362,10 +364,19 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(17, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 102);
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            // 
             // UserControlWorker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonUpdate);
@@ -376,12 +387,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.Controls.Add(this.groupBoxPersonData);
             this.Controls.Add(this.listWorker);
             this.Name = "UserControlWorker";
-            this.Size = new System.Drawing.Size(1010, 291);
+            this.Size = new System.Drawing.Size(1010, 390);
             this.Load += new System.EventHandler(this.UserControlWorker_Load);
             this.groupBoxPersonData.ResumeLayout(false);
             this.groupBoxPersonData.PerformLayout();
             this.groupBoxWorkerData.ResumeLayout(false);
             this.groupBoxWorkerData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -420,5 +432,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.CheckBox checkBoxInsuirance;
         private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

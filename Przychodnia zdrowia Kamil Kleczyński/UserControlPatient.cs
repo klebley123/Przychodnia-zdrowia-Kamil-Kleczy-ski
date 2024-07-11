@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -40,7 +41,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             AddListBox(patient);
             SetEnableButtons();
         }
-        //private
+
         protected virtual void btnLoad_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -219,10 +220,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             if (patient == null) return;
 
             lstPatient.Items.Clear();
-            foreach (var item in patient.GetInfo())
+            var info = patient.GetInfo();
+            foreach (var item in info.Item1)
             {
                 lstPatient.Items.Add(item);
             }
+
+            pictureBox1.Image = info.Item2;
         }
 
         private void SetEnableButtons()
@@ -293,44 +297,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             txtPesel.Enabled = true;
             btnUpdate.Visible = false;
             btnSave.Visible = true;
-        }
-
-        private void btnLoad_Click_1(object sender, EventArgs e)
-        {
-            ClearForm();
-            var patient = _patientStore.GetByIndex(_currentPatientsIndex);
-            txtPesel.Text = patient.Pesel;
-            txtIdNumber.Text = patient.IdNumber;
-            txtFirstName.Text = patient.FirstName;
-            txtLastName.Text = patient.LastName;
-            txtAddress.Text = patient.Address;
-            txtEmail.Text = patient.Email;
-            txtPhoneNumber.Text = patient.PhoneNumber;
-            chkInsurance.Checked = patient.Insurance;
-            txtMedicalRecordNumber.Text = patient.MedicalRecordNumber;
-            txtPrimaryDoctor.Text = patient.PrimaryDoctor;
-            txtWeight.Text = patient.Weight.ToString();
-            txtHeight.Text = patient.Height.ToString();
-            cmbBloodGroup.Text = patient.BloodGroup;
-            var ids = new List<int>();
-            foreach (var id in patient.DiseaseId)
-            {
-                var name = _diseaseStoreStore.GetById(id);
-                foreach (var item in chkDisease.Items)
-                {
-                    if ((string)item == name)
-                        ids.Add(chkDisease.Items.IndexOf(name));
-                }
-
-                foreach (var idx in ids)
-                {
-                    chkDisease.SetItemChecked(idx, true);
-                }
-            }
-
-            txtPesel.Enabled = false;
-            btnSave.Visible = false;
-            btnUpdate.Visible = true;
         }
     }
 }

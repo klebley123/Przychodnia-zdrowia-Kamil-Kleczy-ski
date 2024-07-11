@@ -17,41 +17,72 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         private void UserControlWorker_Load(object sender, EventArgs e)
         {
-            //var worker = _workerStore.GetAll().FirstOrDefault();
-            //var defaultWorker = worker != null ? worker.GetInfo() : _workerStore.GetInfoDefaultWorker();
-            //foreach (var item in defaultWorker)
-            //{
-            //    lstWorker.Items.Add(item);
-            //}
+            var worker = _workerStore.GetAll().FirstOrDefault();
+            AddListBox(worker);
+            SetEnableButtons();
         }
+
+        //private void buttonSave_Click(object sender, EventArgs e)
+        //{
+        //    //var dateOfHire = GetDatePickerDateOfHire(dateTimePickerDateOfHire.CustomFormat);
+        //    var salary = _workerStore.IsValidSalary(textBoxSalary.Text);
+        //    if (salary == 0 && salary > 30001)
+        //    {
+        //        MessageBox.Show(@"Niepoprawne wynagrodzenie.", @"Błąd zapisu", MessageBoxButtons.OK,
+        //            MessageBoxIcon.Error);
+        //        return;
+        //    }
+
+        //    var worker = new Worker(textBoxPesel.Text, textBoxIdNum.Text, textBoxFirstName.Text,
+        //        textBoxLastName.Text,
+        //        textBoxAddress.Text, textBoxEMail.Text, textBoxTelNum.Text, checkBoxInsuirance.Checked,
+        //        textBoxPosition.Text,
+        //        textBoxWorkerId.Text, dateTimePickerDateOfHire.Value.Date, salary);
+
+        //    var message = _workerStore.Add(worker);
+
+        //    if (!string.IsNullOrEmpty(message))
+        //    {
+        //        MessageBox.Show(message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return;
+        //    }
+
+        //    _currentWorkersIndex = _workerStore.GetCount() - 1;
+        //    AddListBox(worker);
+        //    ClearForm();
+        //    SetEnableButtons();
+        //}
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
             //var dateOfHire = GetDatePickerDateOfHire(dateTimePickerDateOfHire.CustomFormat);
-            var salary = _workerStore.IsValidSalary(textBoxSalary.Text);
-            if (salary == 0 && salary > 30001)
+            try
             {
-                MessageBox.Show(@"Niepoprawne wynagrodzenie.", @"Błąd zapisu", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
+                var salary = _workerStore.IsValidSalary(textBoxSalary.Text);
+                if (salary == 0 && salary > 30001)
+                {
+                    MessageBox.Show(@"Niepoprawne wynagrodzenie.", @"Błąd zapisu", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+
+                var worker = new Worker(textBoxPesel.Text, textBoxIdNum.Text, textBoxFirstName.Text,
+                    textBoxLastName.Text,
+                    textBoxAddress.Text, textBoxEMail.Text, textBoxTelNum.Text, checkBoxInsuirance.Checked,
+                    textBoxPosition.Text,
+                    textBoxWorkerId.Text, dateTimePickerDateOfHire.Value.Date, salary);
+
+                _workerStore.Add(worker);
+                _currentWorkersIndex = _workerStore.GetCount() - 1;
+                AddListBox(worker);
+                ClearForm();
+                SetEnableButtons();
             }
-
-            var worker = new Worker(textBoxPesel.Text, textBoxIdNum.Text, textBoxFirstName.Text, textBoxLastName.Text,
-                textBoxAddress.Text, textBoxEMail.Text, textBoxTelNum.Text, checkBoxInsuirance.Checked,
-                textBoxPosition.Text,
-                textBoxWorkerId.Text, dateTimePickerDateOfHire.Value.Date, salary);
-
-            var message = _workerStore.Add(worker);
-            if (!string.IsNullOrEmpty(message))
+            catch (Exception exception)
             {
-                MessageBox.Show(message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show(exception.Message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
             }
-
-            _currentWorkersIndex = _workerStore.GetCount() - 1;
-            AddListBox(worker);
-            ClearForm();
-            SetEnableButtons();
         }
 
         //private DateTimePicker GetDatePickerDateOfHire(string dateOfHire)
@@ -64,10 +95,12 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             if (worker == null) return;
 
             listWorker.Items.Clear();
-            foreach (var item in worker.GetInfo())
+            var info = worker.GetInfo();
+            foreach (var item in info.Item1)
             {
                 listWorker.Items.Add(item);
             }
+            pictureBox1.Image = info.Item2;
         }
 
         private void SetEnableButtons()
