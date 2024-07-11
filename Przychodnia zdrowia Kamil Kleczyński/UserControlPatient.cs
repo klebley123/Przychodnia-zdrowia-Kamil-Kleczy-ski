@@ -10,7 +10,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
     public partial class UserControlPatient : UserControl
     {
-        private readonly PatientStore _patientStore = new PatientStore(new List<Patient>());
+        private readonly PatientStore _patientStore = new PatientStore();
         private readonly DiseaseStore _diseaseStoreStore = new DiseaseStore(false);
         private int _currentPatientsIndex;
 
@@ -181,23 +181,23 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         //    }
         //}
 
-        private void btnExportXML_Click(object sender, EventArgs e)
-        {
-            var saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Title = @"Export pacjentów";
-            saveFileDialog.FileName = "Patients.xml";
-            saveFileDialog.Filter = @"XML Files (*.xml)|*.xml";
+        //private void btnExportXML_Click(object sender, EventArgs e)
+        //{
+        //    var saveFileDialog = new SaveFileDialog();
+        //    saveFileDialog.Title = @"Export pacjentów";
+        //    saveFileDialog.FileName = "Patients.xml";
+        //    saveFileDialog.Filter = @"XML Files (*.xml)|*.xml";
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                var path = saveFileDialog.FileName;
-                var patients = _patientStore.GetAll();
-                var xs = new XmlSerializer(patients.GetType());
-                TextWriter writer = new StreamWriter(path);
-                xs.Serialize(writer, patients);
-                writer.Close();
-            }
-        }
+        //    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        var path = saveFileDialog.FileName;
+        //        var patients = _patientStore.GetAll();
+        //        var xs = new XmlSerializer(patients.GetType());
+        //        TextWriter writer = new StreamWriter(path);
+        //        xs.Serialize(writer, patients);
+        //        writer.Close();
+        //    }
+        //}
 
         private void LoadDiseases()
         {
@@ -233,8 +233,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             {
                 btnPrev.Enabled = false;
                 btnNext.Enabled = false;
-                //btnExportXml.Enabled = false;
-                btnLoad.Enabled = false;
             }
             else
             {
@@ -254,7 +252,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
             if (patientCount > 0)
             {
-                //btnExportXml.Enabled = true;
                 btnLoad.Enabled = true;
             }
         }
@@ -296,6 +293,44 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             txtPesel.Enabled = true;
             btnUpdate.Visible = false;
             btnSave.Visible = true;
+        }
+
+        private void btnLoad_Click_1(object sender, EventArgs e)
+        {
+            ClearForm();
+            var patient = _patientStore.GetByIndex(_currentPatientsIndex);
+            txtPesel.Text = patient.Pesel;
+            txtIdNumber.Text = patient.IdNumber;
+            txtFirstName.Text = patient.FirstName;
+            txtLastName.Text = patient.LastName;
+            txtAddress.Text = patient.Address;
+            txtEmail.Text = patient.Email;
+            txtPhoneNumber.Text = patient.PhoneNumber;
+            chkInsurance.Checked = patient.Insurance;
+            txtMedicalRecordNumber.Text = patient.MedicalRecordNumber;
+            txtPrimaryDoctor.Text = patient.PrimaryDoctor;
+            txtWeight.Text = patient.Weight.ToString();
+            txtHeight.Text = patient.Height.ToString();
+            cmbBloodGroup.Text = patient.BloodGroup;
+            var ids = new List<int>();
+            foreach (var id in patient.DiseaseId)
+            {
+                var name = _diseaseStoreStore.GetById(id);
+                foreach (var item in chkDisease.Items)
+                {
+                    if ((string)item == name)
+                        ids.Add(chkDisease.Items.IndexOf(name));
+                }
+
+                foreach (var idx in ids)
+                {
+                    chkDisease.SetItemChecked(idx, true);
+                }
+            }
+
+            txtPesel.Enabled = false;
+            btnSave.Visible = false;
+            btnUpdate.Visible = true;
         }
     }
 }

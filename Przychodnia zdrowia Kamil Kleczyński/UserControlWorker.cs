@@ -7,7 +7,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
     public partial class UserControlWorker : UserControl
     {
-        private readonly WorkerStore _workerStore = new WorkerStore(new List<Worker>());
+        private readonly WorkerStore _workerStore = new WorkerStore();
         private int _currentWorkersIndex;
 
         public UserControlWorker()
@@ -31,12 +31,14 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             var salary = _workerStore.IsValidSalary(textBoxSalary.Text);
             if (salary == 0 && salary > 30001)
             {
-                MessageBox.Show(@"Niepoprawne wynagrodzenie.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Niepoprawne wynagrodzenie.", @"Błąd zapisu", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return;
             }
 
             var worker = new Worker(textBoxPesel.Text, textBoxIdNum.Text, textBoxFirstName.Text, textBoxLastName.Text,
-                textBoxAddress.Text, textBoxEMail.Text, textBoxTelNum.Text, checkBoxInsuirance.Checked, textBoxPosition.Text,
+                textBoxAddress.Text, textBoxEMail.Text, textBoxTelNum.Text, checkBoxInsuirance.Checked,
+                textBoxPosition.Text,
                 textBoxWorkerId.Text, dateTimePickerDateOfHire.Value.Date, salary);
 
             var message = _workerStore.Add(worker);
@@ -76,8 +78,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             {
                 buttonPrevious.Enabled = false;
                 buttonNext.Enabled = false;
-                //btnExportXml.Enabled = false;
-                buttonLoad.Enabled = false;
             }
             else
             {
@@ -97,8 +97,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
             if (patientCount > 0)
             {
-                //btnExportXml.Enabled = true;
-                buttonLoad.Enabled = true;
+                btnLoad.Enabled = true;
             }
         }
 
@@ -153,12 +152,14 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             var salary = _workerStore.IsValidSalary(textBoxSalary.Text);
             if (salary == 0 && salary > 30001)
             {
-                MessageBox.Show(@"Niepoprawne wynagrodzenie.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Niepoprawne wynagrodzenie.", @"Błąd zapisu", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return;
             }
 
             var worker = new Worker(textBoxPesel.Text, textBoxIdNum.Text, textBoxFirstName.Text, textBoxLastName.Text,
-                textBoxAddress.Text, textBoxEMail.Text, textBoxTelNum.Text, checkBoxInsuirance.Checked, textBoxPosition.Text,
+                textBoxAddress.Text, textBoxEMail.Text, textBoxTelNum.Text, checkBoxInsuirance.Checked,
+                textBoxPosition.Text,
                 textBoxWorkerId.Text, dateTimePickerDateOfHire.Value.Date, salary);
 
             var message = _workerStore.Update(worker);
@@ -186,6 +187,11 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             var worker = _workerStore.GetByIndex(_currentWorkersIndex);
             AddListBox(worker);
             SetEnableButtons();
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            ClearForm();
         }
     }
 }

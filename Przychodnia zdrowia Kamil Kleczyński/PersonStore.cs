@@ -8,8 +8,8 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
     public class PersonStore
     {
-        
         private static PersonStore _instance;
+
         public static PersonStore Instance()
         {
             if (_instance == null) _instance = new PersonStore();
@@ -21,6 +21,21 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private PersonStore()
         {
             People = new List<Person>();
+        }
+
+        public List<Person> GetAll()
+        {
+            return People.OrderBy(x => x.FirstName).ThenBy(x => x.LastName).ToList();
+        }
+
+        public int GetCount()
+        {
+            return GetAll().Count;
+        }
+
+        public Person GetByIndex(int idx)
+        {
+            return GetAll()[idx];
         }
     }
 }

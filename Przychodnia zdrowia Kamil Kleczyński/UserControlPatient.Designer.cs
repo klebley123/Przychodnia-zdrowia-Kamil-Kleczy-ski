@@ -62,9 +62,9 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.txtMedicalRecordNumber = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnLoad = new System.Windows.Forms.Button();
             this.btnAnuluj = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -381,16 +381,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnLoad
-            // 
-            this.btnLoad.Location = new System.Drawing.Point(382, 262);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(75, 23);
-            this.btnLoad.TabIndex = 14;
-            this.btnLoad.Text = "Wczytaj";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
-            // 
             // btnAnuluj
             // 
             this.btnAnuluj.Location = new System.Drawing.Point(544, 262);
@@ -411,12 +401,23 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // btnLoad
+            // 
+            this.btnLoad.Enabled = false;
+            this.btnLoad.Location = new System.Drawing.Point(382, 262);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.TabIndex = 39;
+            this.btnLoad.Text = "Wczytaj";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
             // UserControlPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnAnuluj);
             this.Controls.Add(this.btnLoad);
+            this.Controls.Add(this.btnAnuluj);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrev);
@@ -468,10 +469,10 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckedListBox chkDisease;
-        private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnAnuluj;
         private System.Windows.Forms.Button btnUpdate;
         protected System.Windows.Forms.TextBox txtPesel;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnLoad;
     }
 }

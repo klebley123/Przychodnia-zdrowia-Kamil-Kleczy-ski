@@ -37,7 +37,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.labelAddress = new System.Windows.Forms.Label();
             this.labelLastName = new System.Windows.Forms.Label();
             this.labelFirstName = new System.Windows.Forms.Label();
-            this.checkBoxInsuirance = new System.Windows.Forms.CheckBox();
             this.textBoxIdNum = new System.Windows.Forms.TextBox();
             this.textBoxTelNum = new System.Windows.Forms.TextBox();
             this.textBoxEMail = new System.Windows.Forms.TextBox();
@@ -57,10 +56,11 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.labelPosition = new System.Windows.Forms.Label();
             this.buttonPrevious = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
-            this.buttonLoad = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
+            this.checkBoxInsuirance = new System.Windows.Forms.CheckBox();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.groupBoxPersonData.SuspendLayout();
             this.groupBoxWorkerData.SuspendLayout();
             this.SuspendLayout();
@@ -75,13 +75,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             // 
             // groupBoxPersonData
             // 
+            this.groupBoxPersonData.Controls.Add(this.checkBoxInsuirance);
             this.groupBoxPersonData.Controls.Add(this.labelIdNum);
             this.groupBoxPersonData.Controls.Add(this.labelTelNum);
             this.groupBoxPersonData.Controls.Add(this.labelEMail);
             this.groupBoxPersonData.Controls.Add(this.labelAddress);
             this.groupBoxPersonData.Controls.Add(this.labelLastName);
             this.groupBoxPersonData.Controls.Add(this.labelFirstName);
-            this.groupBoxPersonData.Controls.Add(this.checkBoxInsuirance);
             this.groupBoxPersonData.Controls.Add(this.textBoxIdNum);
             this.groupBoxPersonData.Controls.Add(this.textBoxTelNum);
             this.groupBoxPersonData.Controls.Add(this.textBoxEMail);
@@ -150,16 +150,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.labelFirstName.Size = new System.Drawing.Size(26, 13);
             this.labelFirstName.TabIndex = 9;
             this.labelFirstName.Text = "Imię";
-            // 
-            // checkBoxInsuirance
-            // 
-            this.checkBoxInsuirance.AutoSize = true;
-            this.checkBoxInsuirance.Location = new System.Drawing.Point(96, 204);
-            this.checkBoxInsuirance.Name = "checkBoxInsuirance";
-            this.checkBoxInsuirance.Size = new System.Drawing.Size(93, 17);
-            this.checkBoxInsuirance.TabIndex = 8;
-            this.checkBoxInsuirance.Text = "Ubezpieczony";
-            this.checkBoxInsuirance.UseVisualStyleBackColor = true;
             // 
             // textBoxIdNum
             // 
@@ -321,16 +311,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.buttonNext.UseVisualStyleBackColor = true;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
-            // buttonLoad
-            // 
-            this.buttonLoad.Location = new System.Drawing.Point(397, 251);
-            this.buttonLoad.Name = "buttonLoad";
-            this.buttonLoad.Size = new System.Drawing.Size(75, 23);
-            this.buttonLoad.TabIndex = 6;
-            this.buttonLoad.Text = "Wczytaj";
-            this.buttonLoad.UseVisualStyleBackColor = true;
-            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
-            // 
             // buttonSave
             // 
             this.buttonSave.Location = new System.Drawing.Point(478, 251);
@@ -361,14 +341,35 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.buttonUpdate.UseVisualStyleBackColor = true;
             this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
+            // checkBoxInsuirance
+            // 
+            this.checkBoxInsuirance.AutoSize = true;
+            this.checkBoxInsuirance.Location = new System.Drawing.Point(96, 203);
+            this.checkBoxInsuirance.Name = "checkBoxInsuirance";
+            this.checkBoxInsuirance.Size = new System.Drawing.Size(93, 17);
+            this.checkBoxInsuirance.TabIndex = 19;
+            this.checkBoxInsuirance.Text = "Ubezpieczony";
+            this.checkBoxInsuirance.UseVisualStyleBackColor = true;
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Enabled = false;
+            this.btnLoad.Location = new System.Drawing.Point(394, 251);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.TabIndex = 40;
+            this.btnLoad.Text = "Wczytaj";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
             // UserControlWorker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonPrevious);
             this.Controls.Add(this.groupBoxWorkerData);
@@ -397,7 +398,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private System.Windows.Forms.TextBox textBoxEMail;
         private System.Windows.Forms.TextBox textBoxAddress;
         private System.Windows.Forms.TextBox textBoxLastName;
-        private System.Windows.Forms.CheckBox checkBoxInsuirance;
         private System.Windows.Forms.Label labelEMail;
         private System.Windows.Forms.Label labelAddress;
         private System.Windows.Forms.Label labelLastName;
@@ -415,9 +415,10 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private System.Windows.Forms.TextBox textBoxSalary;
         private System.Windows.Forms.Button buttonPrevious;
         private System.Windows.Forms.Button buttonNext;
-        private System.Windows.Forms.Button buttonLoad;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.CheckBox checkBoxInsuirance;
+        private System.Windows.Forms.Button btnLoad;
     }
 }

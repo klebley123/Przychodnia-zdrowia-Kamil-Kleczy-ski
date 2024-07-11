@@ -6,23 +6,20 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
     public class WorkerStore : Validate
     {
-        private List<Worker> Workers { get; }
-
-        public WorkerStore(List<Worker> workers)
+        public WorkerStore()
         {
-            Workers = workers;
         }
 
         public string Add(Worker worker)
         {
-            var message = ValidatePerson(worker);
-            if (string.IsNullOrEmpty(message))
-            {
-                Workers.Add(worker);
-                return string.Empty;
-            }
+            var message = ValidateWorker(worker);
+            if (!string.IsNullOrEmpty(message)) return message;
 
-            return message;
+            if (IsExists(worker))
+                return $"Istnieje już człowiek o numerze PESEL: {worker.Pesel}";
+
+            PersonStore.Instance().People.Add(worker);
+            return string.Empty;
         }
 
         public string Update(Worker worker)
@@ -46,27 +43,18 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             return string.Empty;
         }
 
-        public List<string> GetInfoDefaultWorker()
-        {
-            return new Worker().GetInfo();
-        }
-
         public List<Worker> GetAll()
         {
-            //return Workers.OrderBy(x => x.FirstName).ThenBy(x => x.LastName).ToList();
-            return PersonStore.Instance().People.Where(x=>x is Worker)
-                .OrderBy(x=>x.FirstName).ThenBy(x=>x.LastName).Select(x=>(Worker)x).ToList();
+            return PersonStore.Instance().People.Where(x=>x is Worker).OrderBy(x=>x.FirstName).ThenBy(x=>x.LastName).Select(x=>(Worker)x).ToList();
         }
 
         public int GetCount()
         {
-            //return Workers.Count;
             return GetAll().Count; 
         }
 
         public Worker GetByPesel(string pesel)
         {
-            //var person = Workers.FirstOrDefault(x => x.Pesel == pesel);
             var person = GetAll().FirstOrDefault(x => x.Pesel == pesel);
             if (person == null)
                 throw new Exception($"Brak osoby o numerze PESEL:{pesel}");
@@ -75,7 +63,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         public Worker GetByIndex(int idx)
         {
-            //return Workers[idx];
             return GetAll()[idx];
         }
 

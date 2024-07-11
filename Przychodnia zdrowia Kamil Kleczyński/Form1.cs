@@ -9,10 +9,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
     public partial class Form1 : Form
     {
-        private readonly PatientStore _patientStore = new PatientStore(new List<Patient>());
-        private readonly DiseaseStore _diseaseStoreStore = new DiseaseStore(false);
-        private int _currentPatientsIndex;
-
         UserControlHome uc;
         UserControlPatient up;
         UserControlWorker uw;
@@ -42,14 +38,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             menuPatient.Enabled = true;
             menuWorker.Enabled = true;
             menuPodglad.Enabled = true;
-
         }
 
         private void homeMenu_Click(object sender, EventArgs e)
         {
             menuHome.Enabled = false;
             menuPatient.Enabled = true;
-            menuWorker.Enabled = true; 
+            menuWorker.Enabled = true;
             menuPodglad.Enabled = true;
             panelContainer.Controls.Add(new UserControlHome());
         }
@@ -83,37 +78,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             menuPodglad.Enabled = false;
             panelContainer.Controls.Clear();
             panelContainer.Controls.Add(new UserControlXMLAndViewing());
-            
-        }
-
-        private void btnImportXML_Click(object sender, EventArgs e)
-        {
-            var openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = @"Import pacjentów";
-            openFileDialog.Filter = @"XML Files (*.xml)|*.xml";
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                var xs = new XmlSerializer(typeof(Patient));
-                using (var stream = new StreamReader(openFileDialog.FileName))
-                {
-                    var xmlDoc = new XmlDocument();
-                    xmlDoc.Load(stream);
-                    var xmlPatientList = xmlDoc.GetElementsByTagName("Patient");
-                    if (xmlPatientList.Count == 0) return;
-
-                    var patients = new List<Patient>();
-                    foreach (XmlNode xmlItem in xmlPatientList)
-                    {
-                        using (XmlReader reader = new XmlNodeReader(xmlItem))
-                        {
-                            patients.Add((Patient)xs.Deserialize(reader));
-                        }
-                    }
-
-                    _patientStore.UpdateList(patients);
-                    //LoadFirstPatient();
-                }
-            }
         }
     }
 }
