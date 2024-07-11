@@ -91,6 +91,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             set => _iDNumber = value;
         }
 
+        [XmlIgnore]
         public Bitmap Photo
         {
             get => _photo;

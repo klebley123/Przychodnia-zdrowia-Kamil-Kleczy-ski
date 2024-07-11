@@ -369,6 +369,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.pictureBox1.Location = new System.Drawing.Point(17, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 102);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 41;
             this.pictureBox1.TabStop = false;
             // 

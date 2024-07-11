@@ -102,7 +102,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             openFileDialog.Filter = @"XML Files (*.xml)|*.xml";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                var xs = new XmlSerializer(typeof(Patient));
+                var xs = new XmlSerializer(typeof(Person));
                 using (var stream = new StreamReader(openFileDialog.FileName))
                 {
                     var xmlDoc = new XmlDocument();
@@ -114,12 +114,19 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                     {
                         using (XmlReader reader = new XmlNodeReader(xmlItem))
                         {
-                            //var person = PersonStore.Instance().People.Add(patient);
-                            //persons.Add((Person)xs.Deserialize(reader));
+                            var person = xs.Deserialize(reader);
+                            if (person.GetType() == typeof(Patient))
+                            {
+                                PersonStore.Instance().People.Add((Patient)person);
+                            }
+
+                            if (person.GetType() == typeof(Worker))
+                            {
+                                PersonStore.Instance().People.Add((Worker)person);
+                            }
                         }
                     }
 
-                    //PersonStore.Instance().UpdateList(persons);
                     LoadFirstPerson();
                 }
             }
