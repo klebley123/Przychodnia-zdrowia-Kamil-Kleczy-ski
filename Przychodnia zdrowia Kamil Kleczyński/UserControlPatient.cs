@@ -82,69 +82,143 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var weight = _patientStore.IsValidWeight(txtWeight.Text);
-            if (weight == 0)
+            try
             {
-                MessageBox.Show(@"Niepoprawna waga.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                var weight = _patientStore.IsValidWeight(txtWeight.Text);
+                if (weight == 0)
+                {
+                    MessageBox.Show(@"Niepoprawna waga.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            var height = _patientStore.IsValidHeight(txtHeight.Text);
-            if (height == 0)
+                var height = _patientStore.IsValidHeight(txtHeight.Text);
+                if (height == 0)
+                {
+                    MessageBox.Show(@"Niepoprawny wzrost.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var diseaseId = GetDiseases();
+                var patient = new Patient(txtPesel.Text, txtIdNumber.Text, txtFirstName.Text, txtLastName.Text,
+                    txtAddress.Text, txtEmail.Text, txtPhoneNumber.Text, chkInsurance.Checked, txtMedicalRecordNumber.Text,
+                    txtPrimaryDoctor.Text, weight, height, cmbBloodGroup.Text, diseaseId);
+
+                _patientStore.Add(patient);
+                //if (!string.IsNullOrEmpty(message))
+                //{
+                //    MessageBox.Show(message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
+
+                _currentPatientsIndex = _patientStore.GetCount() - 1;
+                AddListBox(patient);
+                ClearForm();
+                SetEnableButtons();
+            }
+            catch (Exception exeception)
             {
-                MessageBox.Show(@"Niepoprawny wzrost.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show(exeception.Message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                throw;
             }
+            //var weight = _patientStore.IsValidWeight(txtWeight.Text);
+            //if (weight == 0)
+            //{
+            //    MessageBox.Show(@"Niepoprawna waga.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            var diseaseId = GetDiseases();
-            var patient = new Patient(txtPesel.Text, txtIdNumber.Text, txtFirstName.Text, txtLastName.Text,
-                txtAddress.Text, txtEmail.Text, txtPhoneNumber.Text, chkInsurance.Checked, txtMedicalRecordNumber.Text,
-                txtPrimaryDoctor.Text, weight, height, cmbBloodGroup.Text, diseaseId);
+            //var height = _patientStore.IsValidHeight(txtHeight.Text);
+            //if (height == 0)
+            //{
+            //    MessageBox.Show(@"Niepoprawny wzrost.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            var message = _patientStore.Add(patient);
-            if (!string.IsNullOrEmpty(message))
-            {
-                MessageBox.Show(message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //var diseaseId = GetDiseases();
+            //var patient = new Patient(txtPesel.Text, txtIdNumber.Text, txtFirstName.Text, txtLastName.Text,
+            //    txtAddress.Text, txtEmail.Text, txtPhoneNumber.Text, chkInsurance.Checked, txtMedicalRecordNumber.Text,
+            //    txtPrimaryDoctor.Text, weight, height, cmbBloodGroup.Text, diseaseId);
 
-            _currentPatientsIndex = _patientStore.GetCount() - 1;
-            AddListBox(patient);
-            ClearForm();
-            SetEnableButtons();
+            //var message = _patientStore.Add(patient);
+            //if (!string.IsNullOrEmpty(message))
+            //{
+            //    MessageBox.Show(message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
+            //_currentPatientsIndex = _patientStore.GetCount() - 1;
+            //AddListBox(patient);
+            //ClearForm();
+            //SetEnableButtons();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            var weight = _patientStore.IsValidWeight(txtWeight.Text);
-            if (weight == 0)
+            try
             {
-                MessageBox.Show(@"Niepoprawna waga.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                var weight = _patientStore.IsValidWeight(txtWeight.Text);
+                if (weight == 0)
+                {
+                    MessageBox.Show(@"Niepoprawna waga.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            var height = _patientStore.IsValidHeight(txtHeight.Text);
-            if (height == 0)
+                var height = _patientStore.IsValidHeight(txtHeight.Text);
+                if (height == 0)
+                {
+                    MessageBox.Show(@"Niepoprawny wzrost.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var diseaseId = GetDiseases();
+
+                var patient = new Patient(txtPesel.Text, txtIdNumber.Text, txtFirstName.Text, txtLastName.Text,
+                    txtAddress.Text, txtEmail.Text, txtPhoneNumber.Text, chkInsurance.Checked, txtMedicalRecordNumber.Text,
+                    txtPrimaryDoctor.Text, weight, height, cmbBloodGroup.Text, diseaseId);
+
+                _patientStore.Update(patient);
+                //if (!string.IsNullOrEmpty(message))
+                //{
+                //    MessageBox.Show(message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
+
+                AddListBox(patient);
+                ClearForm();
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(@"Niepoprawny wzrost.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show(ex.Message, @"upss.. coś poszło nie tak", MessageBoxButtons.OK, MessageBoxIcon.Error );
             }
+            //var weight = _patientStore.IsValidWeight(txtWeight.Text);
+            //if (weight == 0)
+            //{
+            //    MessageBox.Show(@"Niepoprawna waga.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            var diseaseId = GetDiseases();
+            //var height = _patientStore.IsValidHeight(txtHeight.Text);
+            //if (height == 0)
+            //{
+            //    MessageBox.Show(@"Niepoprawny wzrost.", @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            var patient = new Patient(txtPesel.Text, txtIdNumber.Text, txtFirstName.Text, txtLastName.Text,
-                txtAddress.Text, txtEmail.Text, txtPhoneNumber.Text, chkInsurance.Checked, txtMedicalRecordNumber.Text,
-                txtPrimaryDoctor.Text, weight, height, cmbBloodGroup.Text, diseaseId);
+            //var diseaseId = GetDiseases();
 
-            var message = _patientStore.Update(patient);
-            if (!string.IsNullOrEmpty(message))
-            {
-                MessageBox.Show(message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //var patient = new Patient(txtPesel.Text, txtIdNumber.Text, txtFirstName.Text, txtLastName.Text,
+            //    txtAddress.Text, txtEmail.Text, txtPhoneNumber.Text, chkInsurance.Checked, txtMedicalRecordNumber.Text,
+            //    txtPrimaryDoctor.Text, weight, height, cmbBloodGroup.Text, diseaseId);
 
-            AddListBox(patient);
-            ClearForm();
+            // var message = _patientStore.Update(patient);
+            ////if (!string.IsNullOrEmpty(message))
+            ////{
+            ////    MessageBox.Show(message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            ////    return;
+            ////}
+
+            //AddListBox(patient);
+            //ClearForm();
         }
 
         private void btnAnuluj_Click(object sender, EventArgs e)

@@ -182,28 +182,57 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            var salary = _workerStore.IsValidSalary(textBoxSalary.Text);
-            if (salary == 0 && salary > 30001)
+            try
             {
-                MessageBox.Show(@"Niepoprawne wynagrodzenie.", @"Błąd zapisu", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
+                var salary = _workerStore.IsValidSalary(textBoxSalary.Text);
+                if (salary == 0 && salary > 30001)
+                {
+                    MessageBox.Show(@"Niepoprawne wynagrodzenie.", @"Błąd zapisu", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+
+                var worker = new Worker(textBoxPesel.Text, textBoxIdNum.Text, textBoxFirstName.Text, textBoxLastName.Text,
+                    textBoxAddress.Text, textBoxEMail.Text, textBoxTelNum.Text, checkBoxInsuirance.Checked,
+                    textBoxPosition.Text,
+                    textBoxWorkerId.Text, dateTimePickerDateOfHire.Value.Date, salary);
+
+                _workerStore.Update(worker);
+                //if (!string.IsNullOrEmpty(message))
+                //{
+                //    MessageBox.Show(message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
+
+                AddListBox(worker);
+                ClearForm();
             }
-
-            var worker = new Worker(textBoxPesel.Text, textBoxIdNum.Text, textBoxFirstName.Text, textBoxLastName.Text,
-                textBoxAddress.Text, textBoxEMail.Text, textBoxTelNum.Text, checkBoxInsuirance.Checked,
-                textBoxPosition.Text,
-                textBoxWorkerId.Text, dateTimePickerDateOfHire.Value.Date, salary);
-
-            var message = _workerStore.Update(worker);
-            if (!string.IsNullOrEmpty(message))
+            catch (Exception exe)
             {
-                MessageBox.Show(message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show(exe.Message, @"upss... Coś poszło nie tak..", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //var salary = _workerStore.IsValidSalary(textBoxSalary.Text);
+            //if (salary == 0 && salary > 30001)
+            //{
+            //    MessageBox.Show(@"Niepoprawne wynagrodzenie.", @"Błąd zapisu", MessageBoxButtons.OK,
+            //        MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            AddListBox(worker);
-            ClearForm();
+            //var worker = new Worker(textBoxPesel.Text, textBoxIdNum.Text, textBoxFirstName.Text, textBoxLastName.Text,
+            //    textBoxAddress.Text, textBoxEMail.Text, textBoxTelNum.Text, checkBoxInsuirance.Checked,
+            //    textBoxPosition.Text,
+            //    textBoxWorkerId.Text, dateTimePickerDateOfHire.Value.Date, salary);
+
+            //var message = _workerStore.Update(worker);
+            //if (!string.IsNullOrEmpty(message))
+            //{
+            //    MessageBox.Show(message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
+            //AddListBox(worker);
+            //ClearForm();
         }
 
         private void buttonPrevious_Click(object sender, EventArgs e)
