@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
-    public class Worker : Person
+    public class Worker : Person, IBasicInfo, IDetails
     {
         private string _position;
         private string _workerId;

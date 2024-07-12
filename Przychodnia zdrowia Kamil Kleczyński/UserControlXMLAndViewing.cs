@@ -20,6 +20,12 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         public UserControlXMLAndViewing()
         {
             InitializeComponent();
+
+            for(int i = 0; i < PersonStore.Instance().People.Count; i++)
+            {
+                UserControlPerson up = new UserControlPerson((IBasicInfo)PersonStore.Instance().People[i], i);
+                peoplePanel.Controls.Add(up);
+            }
         }
 
         private void buttonPrevious_Click(object sender, EventArgs e)

@@ -59,6 +59,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IBasicInfo.cs" />
+    <Compile Include="IDetails.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PatientStore.cs" />
@@ -76,6 +78,12 @@
     </Compile>
     <Compile Include="UserControlPatient.Designer.cs">
       <DependentUpon>UserControlPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlPerson.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlPerson.Designer.cs">
+      <DependentUpon>UserControlPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlWorker.cs">
       <SubType>UserControl</SubType>
@@ -113,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlPatient.resx">
       <DependentUpon>UserControlPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlPerson.resx">
+      <DependentUpon>UserControlPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlWorker.resx">
       <DependentUpon>UserControlWorker.cs</DependentUpon>

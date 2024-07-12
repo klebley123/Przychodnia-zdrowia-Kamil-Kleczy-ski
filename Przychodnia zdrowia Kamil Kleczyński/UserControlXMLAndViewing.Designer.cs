@@ -36,6 +36,7 @@
             this.btnPhoto = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnAssign = new System.Windows.Forms.Button();
+            this.peoplePanel = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,10 +118,18 @@
             this.btnAssign.UseVisualStyleBackColor = true;
             this.btnAssign.Click += new System.EventHandler(this.button1_Click);
             // 
+            // peoplePanel
+            // 
+            this.peoplePanel.Location = new System.Drawing.Point(608, 14);
+            this.peoplePanel.Name = "peoplePanel";
+            this.peoplePanel.Size = new System.Drawing.Size(399, 232);
+            this.peoplePanel.TabIndex = 45;
+            // 
             // UserControlXMLAndViewing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.peoplePanel);
             this.Controls.Add(this.btnAssign);
             this.Controls.Add(this.btnPhoto);
             this.Controls.Add(this.pictureBox1);
@@ -147,5 +156,6 @@
         private System.Windows.Forms.Button btnPhoto;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnAssign;
+        private System.Windows.Forms.FlowLayoutPanel peoplePanel;
     }
 }

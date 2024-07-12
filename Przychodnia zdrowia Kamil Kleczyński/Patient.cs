@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
-    public class Patient : Person
+    public class Patient : Person, IDetails, IBasicInfo
     {
         public string MedicalRecordNumber { get; set; }
         public string PrimaryDoctor { get; set; }
@@ -53,18 +53,40 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             var tmpDateVisits = new List<DateTime>();
         }
 
-        public override (List<string>, Bitmap) GetInfo()
+        (List<string>, Bitmap) IBasicInfo.GetInfo()
         {
             var info = base.GetInfo();
-            info.Item1.Add($"Medical Record Number: {MedicalRecordNumber}");
-            info.Item1.Add($"Primary Doctor: {PrimaryDoctor}");
-            info.Item1.Add($"Weight: {Weight}");
-            info.Item1.Add($"Height: {Height}");
-            info.Item1.Add($"BloodGroup: {BloodGroup}");
-            info.Item1.Add($"Diseases: {string.Join(", ", GetDisease(DiseaseId))}");
+            //info.Item1.Add($"Medical Record Number: {MedicalRecordNumber}");
+            //info.Item1.Add($"Primary Doctor: {PrimaryDoctor}");
+            //info.Item1.Add($"Weight: {Weight}");
+            //info.Item1.Add($"Height: {Height}");
+            //info.Item1.Add($"BloodGroup: {BloodGroup}");
+            //info.Item1.Add($"Diseases: {string.Join(", ", GetDisease(DiseaseId))}");
             info.Item2 = Photo;
 
             return info;
+        }
+
+        (List<string>, Bitmap) IDetails.GetInfo()
+        {
+            List<string> lista = new List<string>(); //base.GetInfo();
+            lista.Add($"Medical Record Number: {MedicalRecordNumber}");
+            lista.Add($"Primary Doctor: {PrimaryDoctor}");
+            lista.Add($"Weight: {Weight}");
+            lista.Add($"Height: {Height}");
+            lista.Add($"BloodGroup: {BloodGroup}");
+            lista.Add($"Diseases: {string.Join(", ", GetDisease(DiseaseId))}");
+
+            return (lista,Photo);
+        }
+
+        public override (List<string>, Bitmap) GetInfo()
+        {
+            var basicInfo = ((IBasicInfo)this).GetInfo();
+            var details = ((IDetails)this).GetInfo();
+            basicInfo.Item1.AddRange(details.Item1);
+
+            return basicInfo;
         }
 
         private IEnumerable<string> GetDisease(ICollection<int> ids)
