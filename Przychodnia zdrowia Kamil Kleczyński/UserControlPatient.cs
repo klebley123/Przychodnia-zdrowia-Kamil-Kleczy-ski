@@ -82,8 +82,8 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 var weight = _patientStore.IsValidWeight(txtWeight.Text);
                 if (weight == 0)
                 {
@@ -102,8 +102,15 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 var patient = new Patient(txtPesel.Text, txtIdNumber.Text, txtFirstName.Text, txtLastName.Text,
                     txtAddress.Text, txtEmail.Text, txtPhoneNumber.Text, chkInsurance.Checked, txtMedicalRecordNumber.Text,
                     txtPrimaryDoctor.Text, weight, height, cmbBloodGroup.Text, diseaseId);
-
+            try
+            {
                 _patientStore.Add(patient);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                
                 //if (!string.IsNullOrEmpty(message))
                 //{
                 //    MessageBox.Show(message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -114,12 +121,12 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 AddListBox(patient);
                 ClearForm();
                 SetEnableButtons();
-            }
-            catch (Exception exeception)
-            {
-                MessageBox.Show(exeception.Message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error );
-                throw;
-            }
+            //}
+            //catch (Exception exeception)
+            //{
+                //MessageBox.Show(exeception.Message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                //throw;
+            //}
             //var weight = _patientStore.IsValidWeight(txtWeight.Text);
             //if (weight == 0)
             //{
