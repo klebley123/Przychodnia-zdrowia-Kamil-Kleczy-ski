@@ -14,8 +14,11 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
     {
         private IBasicInfo _info;
         private int _index;
+        private Action _onClick;
+        private Func<UserControl, bool> _onDeleteClick;
 
-        public UserControlPerson(IBasicInfo info, int index)
+
+        public UserControlPerson(IBasicInfo info, int index, Action onClick, Func<UserControl, bool> onDeleteClick)
         {
             InitializeComponent();
 
@@ -24,17 +27,23 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
             nameLabel.Text = info.GetInfo().Item1[0];
             surnameLabel.Text = info.GetInfo().Item1[1];
+            _onDeleteClick = onDeleteClick;
+            _onClick = onClick;
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            PersonStore.Instance().People.RemoveAt(_index);
-            this.Hide();
+            _onDeleteClick.Invoke(this);
         }
 
         private void surnameLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void UserControlPerson_Click(object sender, EventArgs e)
+        {
+            _onClick.Invoke();
         }
     }
 }

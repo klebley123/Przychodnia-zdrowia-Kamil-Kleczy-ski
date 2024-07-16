@@ -61,6 +61,12 @@
     </Compile>
     <Compile Include="IBasicInfo.cs" />
     <Compile Include="IDetails.cs" />
+    <Compile Include="InfoUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InfoUserControl.Designer.cs">
+      <DependentUpon>InfoUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patient.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PatientStore.cs" />
@@ -105,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoUserControl.resx">
+      <DependentUpon>InfoUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

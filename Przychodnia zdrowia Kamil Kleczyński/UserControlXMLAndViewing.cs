@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,7 +24,25 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
             for(int i = 0; i < PersonStore.Instance().People.Count; i++)
             {
-                UserControlPerson up = new UserControlPerson((IBasicInfo)PersonStore.Instance().People[i], i);
+                Person p = PersonStore.Instance().People[i];
+                IBasicInfo ib = (IBasicInfo)p;
+                UserControlPerson up = new UserControlPerson(ib, i, () => {
+                    InfoUserControl ucp = new InfoUserControl(ib);
+                    peoplePanel.Controls.Add(ucp);
+                }, 
+                    uc => {
+                    if (PersonStore.Instance().GetCount() > 0)
+                    {
+                        PersonStore.Instance().People.Remove(p);
+                        uc.Hide();
+
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                });
                 peoplePanel.Controls.Add(up);
             }
         }

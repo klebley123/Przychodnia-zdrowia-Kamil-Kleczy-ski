@@ -71,6 +71,7 @@
             this.Controls.Add(this.nameLabel);
             this.Name = "UserControlPerson";
             this.Size = new System.Drawing.Size(228, 138);
+            this.Click += new System.EventHandler(this.UserControlPerson_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 
