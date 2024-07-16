@@ -13,10 +13,11 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         public string Add(Patient patient)
         {
             var message = ValidatePatient(patient);
-            if (!string.IsNullOrEmpty(message)) return message;
+            if (!string.IsNullOrEmpty(message)) throw new Exception(message);
 
             if (IsExists(patient))
-                return $"Istnieje już pacjent o numerze PESEL: {patient.Pesel}";
+                throw new Exception($"Istnieje już pacjent o numerze PESEL: {patient.Pesel}");
+            //return $"Istnieje już pacjent o numerze PESEL: {patient.Pesel}";
 
             PersonStore.Instance().People.Add(patient);
             return string.Empty;

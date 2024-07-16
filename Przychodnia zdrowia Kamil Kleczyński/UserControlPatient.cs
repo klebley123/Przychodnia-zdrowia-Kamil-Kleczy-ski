@@ -84,6 +84,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         {
             try
             {
+                //do przeniesienia do pacjent
                 var weight = _patientStore.IsValidWeight(txtWeight.Text);
                 if (weight == 0)
                 {
@@ -118,7 +119,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             catch (Exception exeception)
             {
                 MessageBox.Show(exeception.Message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error );
-                throw;
+                //throw;
             }
             //var weight = _patientStore.IsValidWeight(txtWeight.Text);
             //if (weight == 0)

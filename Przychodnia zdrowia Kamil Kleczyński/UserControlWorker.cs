@@ -81,7 +81,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
+                //throw;
             }
         }
 
