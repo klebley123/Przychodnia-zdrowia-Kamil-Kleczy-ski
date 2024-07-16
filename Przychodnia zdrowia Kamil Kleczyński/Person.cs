@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Xml.Serialization;
+using System.Windows.Forms;
 
 namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
@@ -145,13 +146,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         protected Person(string pesel, string idNumber, string firstName, string lastName, string address, string email,
             string phoneNumber, bool insurance)
         {
-            var p = IsValidPesel(pesel) ? pesel : DefaultPesel;
-            Pesel = p;
+            //var p = IsValidPesel(pesel) ? pesel : DefaultPesel;
+            Pesel = pesel;
             IdNumber = idNumber;
             FirstName = firstName;
             LastName = lastName;
-            DateOfBirth = GetDateOfBirth(p);
-            Gender = GetGender(p);
+            DateOfBirth = GetDateOfBirth(pesel);
+            Gender = GetGender(pesel);
             Address = address;
             Email = email;
             PhoneNumber = phoneNumber;
@@ -161,13 +162,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         protected Person(Person person)
         {
-            var p = IsValidPesel(person.Pesel) ? person.Pesel : DefaultPesel;
-            Pesel = p;
+            //var p = IsValidPesel(person.Pesel) ? person.Pesel : DefaultPesel;
+            Pesel = person.Pesel;
             IdNumber = person.IdNumber;
             FirstName = person.FirstName;
             LastName = person.LastName;
-            DateOfBirth = GetDateOfBirth(p);
-            Gender = GetGender(p);
+            DateOfBirth = GetDateOfBirth(Pesel);
+            Gender = GetGender(Pesel);
             Address = person.Address;
             Email = person.Email;
             PhoneNumber = person.PhoneNumber;

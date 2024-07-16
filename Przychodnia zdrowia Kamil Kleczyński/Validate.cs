@@ -38,6 +38,11 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 return "Niepoprawny nr. telefonu.";
             }
 
+            if (!IsValidName(person.IdNumber, 10))
+            {
+                return "Nie poprawny nr dowodu";
+            }
+
             return string.Empty;
         }
 
