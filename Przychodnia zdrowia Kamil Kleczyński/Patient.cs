@@ -7,13 +7,50 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
     public class Patient : Person, IDetails, IBasicInfo
     {
-        public string MedicalRecordNumber { get; set; }
-        public string PrimaryDoctor { get; set; }
-        public int Weight { get; set; }
-        public int Height { get; set; }
-        public string BloodGroup { get; set; }
+        private string _medicalRecordNumber;
+        private string _primaryDoctor;
+        private int _weight;
+        private int _height;
+        private string _bloodGroup;
 
-        public List<int> DiseaseId { get; set; }
+        private List<int> _diseaseId;
+
+        public string MedicalRecordNumber
+        {
+            get => MedicalRecordNumber;
+            set => MedicalRecordNumber = value;
+        }
+
+        public string PrimaryDoctor
+        {
+            get => PrimaryDoctor;
+            set => PrimaryDoctor = value;
+        }
+
+        public int Weight
+        {
+            get => Weight;
+            set => Weight = value;
+        }
+
+        public int Height
+        {
+            get => Height;
+            set => Height = value;
+        }
+
+        public string BloodGroup
+        {
+            get => BloodGroup;
+            set => BloodGroup = value;
+        }
+
+        public List<int> DiseaseId
+        {
+            get => DiseaseId; 
+            set => DiseaseId = value;
+        }
+
 
         private readonly DiseaseStore _diseaseStoreStore = new DiseaseStore();
 
