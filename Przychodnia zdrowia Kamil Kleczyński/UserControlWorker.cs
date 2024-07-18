@@ -69,7 +69,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 var worker = new Worker(textBoxPesel.Text, textBoxIdNum.Text, textBoxFirstName.Text,
                     textBoxLastName.Text,
                     textBoxAddress.Text, textBoxEMail.Text, textBoxTelNum.Text, checkBoxInsuirance.Checked,
-                    textBoxPosition.Text,
+                    cmbPosition.Text,
                     textBoxWorkerId.Text, dateTimePickerDateOfHire.Value.Date, salary);
 
                 _workerStore.Add(worker);
@@ -143,10 +143,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             textBoxEMail.Clear();
             textBoxTelNum.Clear();
             textBoxIdNum.Clear();
+            cmbPosition.SelectedItem = null;
+            dateTimePickerDateOfHire.Value = DateTime.Now;
+            textBoxWorkerId.Clear();
+            textBoxSalary.Clear();
+
             checkBoxInsuirance.Checked = false;
 
-            textBoxPosition.Clear();
-            dateTimePickerDateOfHire.Value = DateTime.Now;
 
             textBoxPesel.Enabled = true;
             buttonUpdate.Visible = false;
@@ -170,7 +173,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             textBoxEMail.Text = worker.Email;
             textBoxTelNum.Text = worker.PhoneNumber;
             checkBoxInsuirance.Checked = worker.Insurance;
-            textBoxPosition.Text = worker.Position;
+            cmbPosition.Text = worker.Position;
             textBoxWorkerId.Text = worker.WorkerId;
             dateTimePickerDateOfHire.Value = worker.DateOfHire;
             textBoxSalary.Text = worker.Salary.ToString();
@@ -194,7 +197,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
                 var worker = new Worker(textBoxPesel.Text, textBoxIdNum.Text, textBoxFirstName.Text, textBoxLastName.Text,
                     textBoxAddress.Text, textBoxEMail.Text, textBoxTelNum.Text, checkBoxInsuirance.Checked,
-                    textBoxPosition.Text,
+                    cmbPosition.Text,
                     textBoxWorkerId.Text, dateTimePickerDateOfHire.Value.Date, salary);
 
                 _workerStore.Update(worker);
@@ -254,6 +257,21 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private void btnLoad_Click(object sender, EventArgs e)
         {
             ClearForm();
+        }
+
+        private void buttonFullValue_Click(object sender, EventArgs e)
+        {
+            textBoxPesel.Text = "01240332535";
+            textBoxFirstName.Text = "Władysław";
+            textBoxLastName.Text = "Kawalski";
+            textBoxAddress.Text = "Marcowa 12";
+            textBoxEMail.Text = "oko@poko.pl";
+            textBoxTelNum.Text = "112";
+            textBoxIdNum.Text = "PEPE3345";
+            cmbPosition.Text = "Lekarz";
+            dateTimePickerDateOfHire.Text = DateTime.Now.ToString();
+            textBoxWorkerId.Text = "2256";
+            textBoxSalary.Text = "123";
         }
     }
 }

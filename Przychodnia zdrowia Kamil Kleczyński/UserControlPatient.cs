@@ -373,5 +373,21 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             btnUpdate.Visible = false;
             btnSave.Visible = true;
         }
+
+        private void btnFillValue_Click(object sender, EventArgs e)
+        {
+            txtPesel.Text = "01241946373";
+            txtFirstName.Text = "Jon";
+            txtLastName.Text = "Kawalski";
+            txtAddress.Text = "Marcowa 12";
+            txtEmail.Text = "hop@hope.pl";
+            txtPhoneNumber.Text = "997";
+            txtIdNumber.Text = "OOO997887";
+            txtMedicalRecordNumber.Text = "12";
+            txtPrimaryDoctor.Text = "Władysław";
+            txtWeight.Text = "150";
+            txtHeight.Text = "175";
+            cmbBloodGroup.Text = "0 RH+";
+        }
     }
 }

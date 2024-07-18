@@ -53,7 +53,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.textBoxWorkerId = new System.Windows.Forms.TextBox();
             this.labelDateOfHire = new System.Windows.Forms.Label();
             this.dateTimePickerDateOfHire = new System.Windows.Forms.DateTimePicker();
-            this.textBoxPosition = new System.Windows.Forms.TextBox();
             this.labelPosition = new System.Windows.Forms.Label();
             this.buttonPrevious = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
@@ -62,6 +61,8 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonFullValue = new System.Windows.Forms.Button();
+            this.cmbPosition = new System.Windows.Forms.ComboBox();
             this.groupBoxPersonData.SuspendLayout();
             this.groupBoxWorkerData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -223,13 +224,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             // 
             // groupBoxWorkerData
             // 
+            this.groupBoxWorkerData.Controls.Add(this.cmbPosition);
             this.groupBoxWorkerData.Controls.Add(this.labelSalary);
             this.groupBoxWorkerData.Controls.Add(this.textBoxSalary);
             this.groupBoxWorkerData.Controls.Add(this.labelWorkerId);
             this.groupBoxWorkerData.Controls.Add(this.textBoxWorkerId);
             this.groupBoxWorkerData.Controls.Add(this.labelDateOfHire);
             this.groupBoxWorkerData.Controls.Add(this.dateTimePickerDateOfHire);
-            this.groupBoxWorkerData.Controls.Add(this.textBoxPosition);
             this.groupBoxWorkerData.Controls.Add(this.labelPosition);
             this.groupBoxWorkerData.Location = new System.Drawing.Point(673, 13);
             this.groupBoxWorkerData.Name = "groupBoxWorkerData";
@@ -286,13 +287,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.dateTimePickerDateOfHire.Name = "dateTimePickerDateOfHire";
             this.dateTimePickerDateOfHire.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerDateOfHire.TabIndex = 2;
-            // 
-            // textBoxPosition
-            // 
-            this.textBoxPosition.Location = new System.Drawing.Point(102, 19);
-            this.textBoxPosition.Name = "textBoxPosition";
-            this.textBoxPosition.Size = new System.Drawing.Size(200, 20);
-            this.textBoxPosition.TabIndex = 1;
             // 
             // labelPosition
             // 
@@ -374,10 +368,33 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.pictureBox1.TabIndex = 41;
             this.pictureBox1.TabStop = false;
             // 
+            // buttonFullValue
+            // 
+            this.buttonFullValue.Location = new System.Drawing.Point(421, 281);
+            this.buttonFullValue.Name = "buttonFullValue";
+            this.buttonFullValue.Size = new System.Drawing.Size(183, 23);
+            this.buttonFullValue.TabIndex = 42;
+            this.buttonFullValue.Text = "Uzupełnij";
+            this.buttonFullValue.UseVisualStyleBackColor = true;
+            this.buttonFullValue.Click += new System.EventHandler(this.buttonFullValue_Click);
+            // 
+            // cmbPosition
+            // 
+            this.cmbPosition.FormattingEnabled = true;
+            this.cmbPosition.Items.AddRange(new object[] {
+            "Lekarz",
+            "Recepcjonistka",
+            "Sprzątaczka"});
+            this.cmbPosition.Location = new System.Drawing.Point(102, 18);
+            this.cmbPosition.Name = "cmbPosition";
+            this.cmbPosition.Size = new System.Drawing.Size(198, 21);
+            this.cmbPosition.TabIndex = 8;
+            // 
             // UserControlWorker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonFullValue);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.buttonSave);
@@ -421,7 +438,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private System.Windows.Forms.GroupBox groupBoxWorkerData;
         private System.Windows.Forms.Label labelPosition;
         private System.Windows.Forms.DateTimePicker dateTimePickerDateOfHire;
-        private System.Windows.Forms.TextBox textBoxPosition;
         private System.Windows.Forms.Label labelDateOfHire;
         private System.Windows.Forms.Label labelWorkerId;
         private System.Windows.Forms.TextBox textBoxWorkerId;
@@ -435,5 +451,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private System.Windows.Forms.CheckBox checkBoxInsuirance;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button buttonFullValue;
+        private System.Windows.Forms.ComboBox cmbPosition;
     }
 }

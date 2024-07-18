@@ -33,13 +33,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.btnPrev = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelIdNumber = new System.Windows.Forms.Label();
+            this.labelTelNum = new System.Windows.Forms.Label();
+            this.labelEMail = new System.Windows.Forms.Label();
+            this.labelAddress = new System.Windows.Forms.Label();
+            this.labelLastName = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
+            this.labelPesel = new System.Windows.Forms.Label();
             this.chkInsurance = new System.Windows.Forms.CheckBox();
             this.txtIdNumber = new System.Windows.Forms.TextBox();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
@@ -49,23 +49,24 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtPesel = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.labelDisease = new System.Windows.Forms.Label();
             this.chkDisease = new System.Windows.Forms.CheckedListBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.labelBloodGroup = new System.Windows.Forms.Label();
             this.cmbBloodGroup = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.labelHeight = new System.Windows.Forms.Label();
+            this.labelWeight = new System.Windows.Forms.Label();
             this.txtHeight = new System.Windows.Forms.TextBox();
             this.txtWeight = new System.Windows.Forms.TextBox();
             this.txtPrimaryDoctor = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.labelPrimaryDoctor = new System.Windows.Forms.Label();
             this.txtMedicalRecordNumber = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.labelMedicalRecordNumber = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAnuluj = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnFillValue = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -101,13 +102,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.labelIdNumber);
+            this.groupBox1.Controls.Add(this.labelTelNum);
+            this.groupBox1.Controls.Add(this.labelEMail);
+            this.groupBox1.Controls.Add(this.labelAddress);
+            this.groupBox1.Controls.Add(this.labelLastName);
+            this.groupBox1.Controls.Add(this.labelName);
+            this.groupBox1.Controls.Add(this.labelPesel);
             this.groupBox1.Controls.Add(this.chkInsurance);
             this.groupBox1.Controls.Add(this.txtIdNumber);
             this.groupBox1.Controls.Add(this.txtPhoneNumber);
@@ -123,68 +124,68 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dane osobowe";
             // 
-            // label7
+            // labelIdNumber
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 185);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 13);
-            this.label7.TabIndex = 25;
-            this.label7.Text = "Numer dowodu";
+            this.labelIdNumber.AutoSize = true;
+            this.labelIdNumber.Location = new System.Drawing.Point(6, 185);
+            this.labelIdNumber.Name = "labelIdNumber";
+            this.labelIdNumber.Size = new System.Drawing.Size(79, 13);
+            this.labelIdNumber.TabIndex = 25;
+            this.labelIdNumber.Text = "Numer dowodu";
             // 
-            // label6
+            // labelTelNum
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 156);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 13);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Numer telefonu";
+            this.labelTelNum.AutoSize = true;
+            this.labelTelNum.Location = new System.Drawing.Point(6, 156);
+            this.labelTelNum.Name = "labelTelNum";
+            this.labelTelNum.Size = new System.Drawing.Size(79, 13);
+            this.labelTelNum.TabIndex = 24;
+            this.labelTelNum.Text = "Numer telefonu";
             // 
-            // label5
+            // labelEMail
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(53, 130);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "Email";
+            this.labelEMail.AutoSize = true;
+            this.labelEMail.Location = new System.Drawing.Point(53, 130);
+            this.labelEMail.Name = "labelEMail";
+            this.labelEMail.Size = new System.Drawing.Size(32, 13);
+            this.labelEMail.TabIndex = 23;
+            this.labelEMail.Text = "Email";
             // 
-            // label4
+            // labelAddress
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(51, 104);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "Adres";
+            this.labelAddress.AutoSize = true;
+            this.labelAddress.Location = new System.Drawing.Point(51, 104);
+            this.labelAddress.Name = "labelAddress";
+            this.labelAddress.Size = new System.Drawing.Size(34, 13);
+            this.labelAddress.TabIndex = 22;
+            this.labelAddress.Text = "Adres";
             // 
-            // label3
+            // labelLastName
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 78);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "Nazwisko";
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Location = new System.Drawing.Point(32, 78);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(53, 13);
+            this.labelLastName.TabIndex = 21;
+            this.labelLastName.Text = "Nazwisko";
             // 
-            // label2
+            // labelName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(59, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 13);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Imię";
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(59, 52);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(26, 13);
+            this.labelName.TabIndex = 20;
+            this.labelName.Text = "Imię";
             // 
-            // label1
+            // labelPesel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "PESEL";
+            this.labelPesel.AutoSize = true;
+            this.labelPesel.Location = new System.Drawing.Point(44, 26);
+            this.labelPesel.Name = "labelPesel";
+            this.labelPesel.Size = new System.Drawing.Size(41, 13);
+            this.labelPesel.TabIndex = 19;
+            this.labelPesel.Text = "PESEL";
             // 
             // chkInsurance
             // 
@@ -247,18 +248,18 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.labelDisease);
             this.groupBox2.Controls.Add(this.chkDisease);
-            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.labelBloodGroup);
             this.groupBox2.Controls.Add(this.cmbBloodGroup);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.labelHeight);
+            this.groupBox2.Controls.Add(this.labelWeight);
             this.groupBox2.Controls.Add(this.txtHeight);
             this.groupBox2.Controls.Add(this.txtWeight);
             this.groupBox2.Controls.Add(this.txtPrimaryDoctor);
-            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.labelPrimaryDoctor);
             this.groupBox2.Controls.Add(this.txtMedicalRecordNumber);
-            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.labelMedicalRecordNumber);
             this.groupBox2.Location = new System.Drawing.Point(690, 13);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(317, 272);
@@ -266,14 +267,14 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dane medyczne";
             // 
-            // label13
+            // labelDisease
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(42, 156);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(46, 13);
-            this.label13.TabIndex = 36;
-            this.label13.Text = "Choroby";
+            this.labelDisease.AutoSize = true;
+            this.labelDisease.Location = new System.Drawing.Point(42, 156);
+            this.labelDisease.Name = "labelDisease";
+            this.labelDisease.Size = new System.Drawing.Size(46, 13);
+            this.labelDisease.TabIndex = 36;
+            this.labelDisease.Text = "Choroby";
             // 
             // chkDisease
             // 
@@ -283,14 +284,14 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.chkDisease.Size = new System.Drawing.Size(211, 109);
             this.chkDisease.TabIndex = 35;
             // 
-            // label12
+            // labelBloodGroup
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(30, 138);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 13);
-            this.label12.TabIndex = 34;
-            this.label12.Text = "Grupa krwi";
+            this.labelBloodGroup.AutoSize = true;
+            this.labelBloodGroup.Location = new System.Drawing.Point(30, 138);
+            this.labelBloodGroup.Name = "labelBloodGroup";
+            this.labelBloodGroup.Size = new System.Drawing.Size(58, 13);
+            this.labelBloodGroup.TabIndex = 34;
+            this.labelBloodGroup.Text = "Grupa krwi";
             // 
             // cmbBloodGroup
             // 
@@ -309,23 +310,23 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.cmbBloodGroup.Size = new System.Drawing.Size(211, 21);
             this.cmbBloodGroup.TabIndex = 33;
             // 
-            // label11
+            // labelHeight
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(52, 108);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 13);
-            this.label11.TabIndex = 32;
-            this.label11.Text = "Wzrost";
+            this.labelHeight.AutoSize = true;
+            this.labelHeight.Location = new System.Drawing.Point(52, 108);
+            this.labelHeight.Name = "labelHeight";
+            this.labelHeight.Size = new System.Drawing.Size(40, 13);
+            this.labelHeight.TabIndex = 32;
+            this.labelHeight.Text = "Wzrost";
             // 
-            // label10
+            // labelWeight
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(52, 82);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 13);
-            this.label10.TabIndex = 31;
-            this.label10.Text = "Waga";
+            this.labelWeight.AutoSize = true;
+            this.labelWeight.Location = new System.Drawing.Point(52, 82);
+            this.labelWeight.Name = "labelWeight";
+            this.labelWeight.Size = new System.Drawing.Size(36, 13);
+            this.labelWeight.TabIndex = 31;
+            this.labelWeight.Text = "Waga";
             // 
             // txtHeight
             // 
@@ -348,14 +349,14 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.txtPrimaryDoctor.Size = new System.Drawing.Size(211, 20);
             this.txtPrimaryDoctor.TabIndex = 28;
             // 
-            // label9
+            // labelPrimaryDoctor
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(49, 56);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(39, 13);
-            this.label9.TabIndex = 27;
-            this.label9.Text = "Lekarz";
+            this.labelPrimaryDoctor.AutoSize = true;
+            this.labelPrimaryDoctor.Location = new System.Drawing.Point(49, 56);
+            this.labelPrimaryDoctor.Name = "labelPrimaryDoctor";
+            this.labelPrimaryDoctor.Size = new System.Drawing.Size(39, 13);
+            this.labelPrimaryDoctor.TabIndex = 27;
+            this.labelPrimaryDoctor.Text = "Lekarz";
             // 
             // txtMedicalRecordNumber
             // 
@@ -364,14 +365,14 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.txtMedicalRecordNumber.Size = new System.Drawing.Size(211, 20);
             this.txtMedicalRecordNumber.TabIndex = 26;
             // 
-            // label8
+            // labelMedicalRecordNumber
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 26);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(82, 13);
-            this.label8.TabIndex = 25;
-            this.label8.Text = "Numer kartoteki";
+            this.labelMedicalRecordNumber.AutoSize = true;
+            this.labelMedicalRecordNumber.Location = new System.Drawing.Point(6, 26);
+            this.labelMedicalRecordNumber.Name = "labelMedicalRecordNumber";
+            this.labelMedicalRecordNumber.Size = new System.Drawing.Size(82, 13);
+            this.labelMedicalRecordNumber.TabIndex = 25;
+            this.labelMedicalRecordNumber.Text = "Numer kartoteki";
             // 
             // btnSave
             // 
@@ -424,10 +425,21 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.pictureBox1.TabIndex = 40;
             this.pictureBox1.TabStop = false;
             // 
+            // btnFillValue
+            // 
+            this.btnFillValue.Location = new System.Drawing.Point(416, 292);
+            this.btnFillValue.Name = "btnFillValue";
+            this.btnFillValue.Size = new System.Drawing.Size(169, 23);
+            this.btnFillValue.TabIndex = 41;
+            this.btnFillValue.Text = "Uzupełnij";
+            this.btnFillValue.UseVisualStyleBackColor = true;
+            this.btnFillValue.Click += new System.EventHandler(this.btnFillValue_Click);
+            // 
             // UserControlPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnFillValue);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnAnuluj);
@@ -456,13 +468,13 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private System.Windows.Forms.Button btnPrev;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelIdNumber;
+        private System.Windows.Forms.Label labelTelNum;
+        private System.Windows.Forms.Label labelEMail;
+        private System.Windows.Forms.Label labelAddress;
+        private System.Windows.Forms.Label labelLastName;
+        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.Label labelPesel;
         private System.Windows.Forms.CheckBox chkInsurance;
         private System.Windows.Forms.TextBox txtIdNumber;
         private System.Windows.Forms.TextBox txtPhoneNumber;
@@ -471,17 +483,17 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.TextBox txtMedicalRecordNumber;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelMedicalRecordNumber;
         private System.Windows.Forms.TextBox txtPrimaryDoctor;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelPrimaryDoctor;
         private System.Windows.Forms.TextBox txtHeight;
         private System.Windows.Forms.TextBox txtWeight;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label labelBloodGroup;
         private System.Windows.Forms.ComboBox cmbBloodGroup;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelHeight;
+        private System.Windows.Forms.Label labelWeight;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label labelDisease;
         private System.Windows.Forms.CheckedListBox chkDisease;
         private System.Windows.Forms.Button btnAnuluj;
         private System.Windows.Forms.Button btnUpdate;
@@ -489,5 +501,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnFillValue;
     }
 }

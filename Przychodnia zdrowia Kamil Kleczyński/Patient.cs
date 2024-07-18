@@ -17,38 +17,38 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         public string MedicalRecordNumber
         {
-            get => MedicalRecordNumber;
-            set => MedicalRecordNumber = value;
+            get => _medicalRecordNumber;
+            set => _medicalRecordNumber = value;
         }
 
         public string PrimaryDoctor
         {
-            get => PrimaryDoctor;
-            set => PrimaryDoctor = value;
+            get => _primaryDoctor;
+            set => _primaryDoctor = value;
         }
 
         public int Weight
         {
-            get => Weight;
-            set => Weight = value;
+            get => _weight;
+            set => _weight = value;
         }
 
         public int Height
         {
-            get => Height;
-            set => Height = value;
+            get => _height;
+            set => _height = value;
         }
 
         public string BloodGroup
         {
-            get => BloodGroup;
-            set => BloodGroup = value;
+            get => _bloodGroup;
+            set => _bloodGroup = value;
         }
 
         public List<int> DiseaseId
         {
-            get => DiseaseId; 
-            set => DiseaseId = value;
+            get => _diseaseId; 
+            set => _diseaseId = value;
         }
 
 

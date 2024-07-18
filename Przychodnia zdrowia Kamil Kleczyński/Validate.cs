@@ -54,7 +54,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 return message;
             }
 
-            if (!IsValidName(patient.MedicalRecordNumber, 10))
+            if (!IsValidName(patient.MedicalRecordNumber, 100))
             {
                 return "Niepoprawny numer kartoteki.";
             }
