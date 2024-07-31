@@ -19,7 +19,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 throw new Exception($"Istnieje już pacjent o numerze PESEL: {patient.Pesel}");
             //return $"Istnieje już pacjent o numerze PESEL: {patient.Pesel}";
 
-            PersonStore.Instance().People.Add(patient);
+            PersonStore.People.Add(patient);
             return string.Empty;
         }
 
@@ -48,7 +48,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         public List<Patient> GetAll()
         {
-            return PersonStore.Instance().People.Where(x => x is Patient)
+            return PersonStore.People.Where(x => x is Patient)
                 .OrderBy(x => x.FirstName).ThenBy(x => x.LastName).Select(x => (Patient)x).ToList();
         }
 

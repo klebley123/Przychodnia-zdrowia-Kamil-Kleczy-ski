@@ -31,7 +31,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             if (IsExists(worker))
                 throw new Exception($"Istnieje już człowiek o numerze PESEL: {worker.Pesel}");
 
-            PersonStore.Instance().People.Add(worker);
+            PersonStore.People.Add(worker);
         }
 
         public string Update(Worker worker)
@@ -57,7 +57,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         public List<Worker> GetAll()
         {
-            return PersonStore.Instance().People.Where(x=>x is Worker).OrderBy(x=>x.FirstName).ThenBy(x=>x.LastName).Select(x=>(Worker)x).ToList();
+            return PersonStore.People.Where(x=>x is Worker).OrderBy(x=>x.FirstName).ThenBy(x=>x.LastName).Select(x=>(Worker)x).ToList();
         }
 
         public int GetCount()

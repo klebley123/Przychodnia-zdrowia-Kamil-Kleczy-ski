@@ -60,21 +60,36 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             return info;
         }
 
+        //public override bool Equals(object obj)
+        //{
+        //    if (base.Equals(obj))
+        //    {
+        //        return true;
+        //    }
+        //    else if (obj is Person)
+        //    {
+        //        Person other = (Person)obj;
+        //        return this.Pesel == other.Pesel && this.FirstName == ;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
         public override bool Equals(object obj)
         {
             if (base.Equals(obj))
             {
-                return true;
-            }
-            else if (obj is Person)
-            {
-                Person other = (Person)obj;
-                return this.Pesel == other.Pesel;
-            }
-            else
-            {
+                if (obj is Worker other)
+                {
+                    return Position == other.Position &&
+                           WorkerId == other.WorkerId &&
+                           DateOfHire == other.DateOfHire &&
+                           Salary == other.Salary;
+                }
                 return false;
             }
+            return false;
         }
     }
 }

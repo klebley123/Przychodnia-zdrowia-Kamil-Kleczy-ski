@@ -22,18 +22,18 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         {
             InitializeComponent();
 
-            for(int i = 0; i < PersonStore.Instance().People.Count; i++)
+            for(int i = 0; i < PersonStore.People.Count; i++)
             {
-                Person p = PersonStore.Instance().People[i];
+                Person p = PersonStore.People[i];
                 IBasicInfo ib = (IBasicInfo)p;
                 UserControlPerson up = new UserControlPerson(ib, i, () => {
                     InfoUserControl ucp = new InfoUserControl(ib);
                     peoplePanel.Controls.Add(ucp);
                 }, 
                     uc => {
-                    if (PersonStore.Instance().GetCount() > 0)
+                    if (PersonStore.GetCount() > 0)
                     {
-                        PersonStore.Instance().People.Remove(p);
+                        PersonStore.People.Remove(p);
                         uc.Hide();
 
                         return true;
@@ -47,53 +47,34 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             }
         }
 
-        private void buttonPrevious_Click(object sender, EventArgs e)
-        {
-            _currentPatientsIndex--;
-            var person = PersonStore.Instance().GetByIndex(_currentPatientsIndex);
-            AddListBox(person);
-            SetEnabledButtons();
-        }
-
-        private void buttonNext_Click(object sender, EventArgs e)
-        {
-            _currentPatientsIndex++;
-            var person = PersonStore.Instance().GetByIndex(_currentPatientsIndex);
-            AddListBox(person);
-            SetEnabledButtons();
-        }
 
         private void SetEnabledButtons()
         {
-            var patientCount = PersonStore.Instance().GetCount();
+            var patientCount = PersonStore.GetCount();
             var lastIndex = patientCount - 1;
             if (lastIndex <= 0)
             {
-                buttonPrevious.Enabled = false;
-                buttonNext.Enabled = false;
+                BtnPrevious.Enabled = false;
+                BtnNext.Enabled = false;
             }
             else
             {
-                buttonPrevious.Enabled = true;
-                buttonNext.Enabled = true;
+                BtnPrevious.Enabled = true;
+                BtnNext.Enabled = true;
             }
 
             if (_currentPatientsIndex == lastIndex)
             {
-                buttonNext.Enabled = false;
+                BtnNext.Enabled = false;
             }
 
             if (_currentPatientsIndex == 0)
             {
-                buttonPrevious.Enabled = false;
+                BtnPrevious.Enabled = false;
             }
         }
 
-        private void buttonView_Click(object sender, EventArgs e)
-        {
-            SetEnabledButtons();
-        }
-
+     
         private void UserControlXMLAndViewing_Load(object sender, EventArgs e)
         {
             LoadFirstPerson();
@@ -101,7 +82,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         private void LoadFirstPerson()
         {
-            var patient = PersonStore.Instance().GetAll().FirstOrDefault();
+            var patient = PersonStore.GetInOrder().FirstOrDefault();
             AddListBox(patient);
             SetEnabledButtons();
         }
@@ -120,7 +101,58 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             pictureBox1.Image = person.Photo;
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
+        private void BtnPrevious_Click(object sender, EventArgs e)
+        {
+            _currentPatientsIndex--;
+            var person = PersonStore.GetByIndex(_currentPatientsIndex);
+            AddListBox(person);
+            SetEnabledButtons();
+        }
+
+        private void BtnNext_Click(object sender, EventArgs e)
+        {
+            _currentPatientsIndex++;
+            var person = PersonStore.GetByIndex(_currentPatientsIndex);
+            AddListBox(person);
+            SetEnabledButtons();
+        }
+
+        private void BtnAssign_Click(object sender, EventArgs e)
+        {
+            var person = PersonStore.GetByIndex(_currentPatientsIndex);
+            person.Photo = (Bitmap)pictureBox1.Image;
+        }
+
+        private void BtnPhoto_Click(object sender, EventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = @"Zdjęcia";
+            openFileDialog.Filter = @"Photo Files (*.jpg)|*.jpg";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
+            }
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = @"Export ludzi";
+            saveFileDialog.FileName = "Persons.xml";
+            saveFileDialog.Filter = @"XML Files (*.xml)|*.xml";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var path = saveFileDialog.FileName;
+                var persons = PersonStore.GetInOrder();
+                var xs = new XmlSerializer(persons.GetType());
+                TextWriter writer = new StreamWriter(path);
+                xs.Serialize(writer, persons);
+                writer.Close();
+            }
+        }
+
+        private void BtnLoad_Click(object sender, EventArgs e)
         {
             var openFileDialog = new OpenFileDialog();
             openFileDialog.Title = @"Import ludzi";
@@ -142,12 +174,12 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                             var person = xs.Deserialize(reader);
                             if (person.GetType() == typeof(Patient))
                             {
-                                PersonStore.Instance().People.Add((Patient)person);
+                                PersonStore.People.Add((Patient)person);
                             }
 
                             if (person.GetType() == typeof(Worker))
                             {
-                                PersonStore.Instance().People.Add((Worker)person);
+                                PersonStore.People.Add((Worker)person);
                             }
                         }
                     }
@@ -155,41 +187,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                     LoadFirstPerson();
                 }
             }
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            var saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Title = @"Export ludzi";
-            saveFileDialog.FileName = "Persons.xml";
-            saveFileDialog.Filter = @"XML Files (*.xml)|*.xml";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                var path = saveFileDialog.FileName;
-                var persons = PersonStore.Instance().GetAll();
-                var xs = new XmlSerializer(persons.GetType());
-                TextWriter writer = new StreamWriter(path);
-                xs.Serialize(writer, persons);
-                writer.Close();
-            }
-        }
-
-        private void btnPhoto_Click(object sender, EventArgs e)
-        {
-            var openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = @"Zdjęcia";
-            openFileDialog.Filter = @"Photo Files (*.jpg)|*.jpg";
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var person = PersonStore.Instance().GetByIndex(_currentPatientsIndex);
-            person.Photo = (Bitmap)pictureBox1.Image;
         }
     }
 }

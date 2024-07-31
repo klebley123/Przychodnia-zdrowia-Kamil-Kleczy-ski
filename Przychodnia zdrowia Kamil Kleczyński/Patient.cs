@@ -137,17 +137,18 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         {
             if (base.Equals(obj))
             {
-                return true;
-            }
-            else if(obj is Person)
-            {
-                Person other = (Person)obj;
-                return this.Pesel == other.Pesel;
-            }
-            else
-            {
+                if (obj is Patient other)
+                {
+                    return MedicalRecordNumber == other.MedicalRecordNumber &&
+                           PrimaryDoctor == other.PrimaryDoctor &&
+                           Weight == other.Weight &&
+                           Height == other.Height &&
+                           BloodGroup == other.BloodGroup &&
+                           DiseaseId.SequenceEqual(other.DiseaseId);
+                }
                 return false;
             }
+            return false;
         }
     }
 }

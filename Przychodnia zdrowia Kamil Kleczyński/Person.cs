@@ -193,10 +193,18 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             return (lista, Photo);
         }
 
-        public virtual bool Equals(string pesel)
+        public override bool Equals(object obj)
         {
-            return Pesel.Equals(pesel);
+            if (obj is Person person)
+            {
+                return Pesel.Equals(person.Pesel) && FirstName.Equals(person.FirstName) && LastName.Equals(person.LastName);
+            }
+            return false;
         }
+        //public virtual bool Equals(string pesel)
+        //{
+        //    return Pesel.Equals(pesel) ;
+        //}
 
         private DateTime? GetDateOfBirth(string pesel)
         {
