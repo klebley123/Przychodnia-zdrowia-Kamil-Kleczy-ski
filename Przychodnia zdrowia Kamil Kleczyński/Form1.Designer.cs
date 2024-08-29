@@ -60,21 +60,21 @@
             this.menuHome.Name = "menuHome";
             this.menuHome.Size = new System.Drawing.Size(28, 20);
             this.menuHome.Text = "Home";
-            this.menuHome.Click += new System.EventHandler(this.homeMenu_Click);
+            this.menuHome.Click += new System.EventHandler(this.HomeMenu_Click);
             // 
             // menuPatient
             // 
             this.menuPatient.Name = "menuPatient";
             this.menuPatient.Size = new System.Drawing.Size(63, 20);
             this.menuPatient.Text = "Pacjenci";
-            this.menuPatient.Click += new System.EventHandler(this.patientMenu_Click);
+            this.menuPatient.Click += new System.EventHandler(this.PatientMenu_Click);
             // 
             // menuWorker
             // 
             this.menuWorker.Name = "menuWorker";
             this.menuWorker.Size = new System.Drawing.Size(80, 20);
             this.menuWorker.Text = "Pracownicy";
-            this.menuWorker.Click += new System.EventHandler(this.worekrMenu_Click);
+            this.menuWorker.Click += new System.EventHandler(this.WorekrMenu_Click);
             // 
             // menuPodglad
             // 

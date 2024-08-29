@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Windows.Forms;
-using System.Xml.Serialization;
-using System.Xml;
 
 namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
     public partial class Form1 : Form
     {
-        UserControlHome uc;
-        UserControlPatient up;
-        UserControlWorker uw;
-        UserControlXMLAndViewing uxml;
+        private UserControlHome _uc;
+        private UserControlPatient _up;
+        private UserControlWorker _uw;
+        private UserControlXMLAndViewing _uxml;
 
         public Form1()
         {
@@ -21,18 +17,18 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            uc = new UserControlHome();
-            up = new UserControlPatient();
-            uw = new UserControlWorker();
-            uxml = new UserControlXMLAndViewing();
+            _uc = new UserControlHome();
+            _up = new UserControlPatient();
+            _uw = new UserControlWorker();
+            _uxml = new UserControlXMLAndViewing();
 
-            uc.Dock = DockStyle.Fill;
-            up.Dock = DockStyle.Fill;
-            uw.Dock = DockStyle.Fill;
+            _uc.Dock = DockStyle.Fill;
+            _up.Dock = DockStyle.Fill;
+            _uw.Dock = DockStyle.Fill;
 
-            panelContainer.Controls.Add(uc);
-            panelContainer.Controls.Add(up);
-            panelContainer.Controls.Add(uw);
+            panelContainer.Controls.Add(_uc);
+            panelContainer.Controls.Add(_up);
+            panelContainer.Controls.Add(_uw);
 
             menuHome.Enabled = false;
             menuPatient.Enabled = true;
@@ -40,7 +36,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             menuPodglad.Enabled = true;
         }
 
-        private void homeMenu_Click(object sender, EventArgs e)
+        private void HomeMenu_Click(object sender, EventArgs e)
         {
             menuHome.Enabled = false;
             menuPatient.Enabled = true;
@@ -49,7 +45,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             panelContainer.Controls.Add(new UserControlHome());
         }
 
-        private void patientMenu_Click(object sender, EventArgs e)
+        private void PatientMenu_Click(object sender, EventArgs e)
         {
             menuHome.Enabled = true;
             menuPatient.Enabled = false;
@@ -60,7 +56,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             //up.BringToFront();
         }
 
-        private void worekrMenu_Click(object sender, EventArgs e)
+        private void WorekrMenu_Click(object sender, EventArgs e)
         {
             menuHome.Enabled = true;
             menuPatient.Enabled = true;
