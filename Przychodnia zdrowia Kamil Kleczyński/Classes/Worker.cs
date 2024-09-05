@@ -12,10 +12,10 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private decimal _salary;        
         private DateTime _dateOfHire;
 
-        public string Position { get => _position; private set => _position = value; }
-        public string WorkerId {  get => _workerId; private set => _workerId = value; }
-        public DateTime DateOfHire { get => _dateOfHire; private set => _dateOfHire = value; }
-        public decimal Salary { get => _salary; private set => _salary = value; }
+        public string Position { get => _position; set => _position = value; }
+        public string WorkerId {  get => _workerId; set => _workerId = value; }
+        public DateTime DateOfHire { get => _dateOfHire; set => _dateOfHire = value; }
+        public decimal Salary { get => _salary; set => _salary = value; }
 
         #region konstruktory
 

@@ -88,7 +88,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private void BtnAssign_Click(object sender, EventArgs e)
         {
             var person = PersonStore.GetByIndex(_currentPatientsIndex);
-            //TODO: person._photo = (Bitmap)pictureBox1.Image;
+            //TODOperson._photo = (Bitmap)pictureBox1.Image;
         }
 
         private void BtnPhoto_Click(object sender, EventArgs e)

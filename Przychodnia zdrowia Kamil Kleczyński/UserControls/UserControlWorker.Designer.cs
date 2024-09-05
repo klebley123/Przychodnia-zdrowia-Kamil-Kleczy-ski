@@ -51,7 +51,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.groupBoxWorkerData.Controls.Add(this.labelDateOfHire);
             this.groupBoxWorkerData.Controls.Add(this.dateTimePickerDateOfHire);
             this.groupBoxWorkerData.Controls.Add(this.labelPosition);
-            this.groupBoxWorkerData.Location = new System.Drawing.Point(691, 13);
+            this.groupBoxWorkerData.Location = new System.Drawing.Point(676, 18);
             this.groupBoxWorkerData.Name = "groupBoxWorkerData";
             this.groupBoxWorkerData.Size = new System.Drawing.Size(306, 124);
             this.groupBoxWorkerData.TabIndex = 3;
@@ -134,8 +134,9 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBoxWorkerData);
             this.Name = "UserControlWorker";
-            this.Size = new System.Drawing.Size(1010, 390);
+            this.Size = new System.Drawing.Size(995, 390);
             this.Load += new System.EventHandler(this.UserControlWorker_Load);
+            this.Controls.SetChildIndex(this.groupBoxWorkerData, 0);
             this.groupBoxWorkerData.ResumeLayout(false);
             this.groupBoxWorkerData.PerformLayout();
             this.ResumeLayout(false);

@@ -33,9 +33,7 @@
             this.listPersons = new System.Windows.Forms.ListBox();
             this.BtnLoad = new System.Windows.Forms.Button();
             this.BtnSave = new System.Windows.Forms.Button();
-            this.BtnPhoto = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BtnAssign = new System.Windows.Forms.Button();
             this.peoplePanel = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -74,7 +72,7 @@
             this.BtnLoad.Name = "BtnLoad";
             this.BtnLoad.Size = new System.Drawing.Size(75, 23);
             this.BtnLoad.TabIndex = 3;
-            this.BtnLoad.Text = "Wczytaj";
+            this.BtnLoad.Text = "ImportXML";
             this.BtnLoad.UseVisualStyleBackColor = true;
             this.BtnLoad.Click += new System.EventHandler(this.BtnLoad_Click);
             // 
@@ -84,19 +82,9 @@
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(75, 23);
             this.BtnSave.TabIndex = 4;
-            this.BtnSave.Text = "Zapisz";
+            this.BtnSave.Text = "ExportXML";
             this.BtnSave.UseVisualStyleBackColor = true;
             this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
-            // 
-            // BtnPhoto
-            // 
-            this.BtnPhoto.Location = new System.Drawing.Point(517, 252);
-            this.BtnPhoto.Name = "BtnPhoto";
-            this.BtnPhoto.Size = new System.Drawing.Size(75, 23);
-            this.BtnPhoto.TabIndex = 43;
-            this.BtnPhoto.Text = "Zdjęcie";
-            this.BtnPhoto.UseVisualStyleBackColor = true;
-            this.BtnPhoto.Click += new System.EventHandler(this.BtnPhoto_Click);
             // 
             // pictureBox1
             // 
@@ -107,16 +95,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 42;
             this.pictureBox1.TabStop = false;
-            // 
-            // BtnAssign
-            // 
-            this.BtnAssign.Location = new System.Drawing.Point(420, 252);
-            this.BtnAssign.Name = "BtnAssign";
-            this.BtnAssign.Size = new System.Drawing.Size(75, 23);
-            this.BtnAssign.TabIndex = 44;
-            this.BtnAssign.Text = "Przypisz";
-            this.BtnAssign.UseVisualStyleBackColor = true;
-            this.BtnAssign.Click += new System.EventHandler(this.BtnAssign_Click);
             // 
             // peoplePanel
             // 
@@ -130,8 +108,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.peoplePanel);
-            this.Controls.Add(this.BtnAssign);
-            this.Controls.Add(this.BtnPhoto);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.BtnLoad);
@@ -153,9 +129,7 @@
         private System.Windows.Forms.ListBox listPersons;
         private System.Windows.Forms.Button BtnLoad;
         private System.Windows.Forms.Button BtnSave;
-        private System.Windows.Forms.Button BtnPhoto;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button BtnAssign;
         private System.Windows.Forms.FlowLayoutPanel peoplePanel;
     }
 }

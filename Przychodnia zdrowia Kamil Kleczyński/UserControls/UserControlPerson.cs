@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,6 +13,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         protected event EventHandler _cancelButtonClicked;
         protected event EventHandler _loadButtonClicked;
         protected event EventHandler _updateButtonClicked;
+        protected event EventHandler _photoButtonClicked;
 
         public UserControlPerson()
         {
@@ -22,7 +24,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         public ListBox.ObjectCollection ListItems { get => listPerson.Items; }
 
-        public PictureBox PictureBox { get => pictureBox1; }
+        public PictureBox PictureBox { get => pictureBoxPhoto; private set => pictureBoxPhoto = value; }
         public string Pesel { get => textBoxPesel.Text; private set => textBoxPesel.Text = value; }
         public string FirstName { get => textBoxFirstName.Text; private set => textBoxFirstName.Text = value; }
         public string LastName { get => textBoxLastName.Text; private set => textBoxLastName.Text = value; }
@@ -66,7 +68,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 ListItems.Add(item);
             }
 
-            PictureBox.Image = info.Item2;
+            pictureBoxPhoto.Image = patient.Photo;
             SetEnableButtons();
         }
 
@@ -77,6 +79,8 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
             ListItems.Clear();
             AddListBox(person);
+            pictureBoxPhoto.Image = person.Photo;
+            
 
             SetEnableButtons();
         }
@@ -89,16 +93,19 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             {
                 buttonPrevious.Enabled = false;
                 buttonNext.Enabled = false;
+                buttonLoadPhoto.Enabled = false;
             }
             else
             {
                 buttonPrevious.Enabled = true;
                 buttonNext.Enabled = true;
+                buttonLoadPhoto.Enabled = true;
             }
 
             if (_currentPersonIndex == lastIndex)
             {
                 buttonNext.Enabled = false;
+                buttonLoadPhoto.Enabled = true;
             }
 
             if (_currentPersonIndex == 0)
@@ -173,6 +180,19 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             var person = PersonStore.GetByIndex(_currentPersonIndex);
             AddListBox(person);
             ClearForm();
+        }
+
+        private void buttonLoadPhoto_Click(object sender, EventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = @"Zdjęcia";
+            openFileDialog.Filter = @"Photo Files (*.jpg)|*.jpg";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                pictureBoxPhoto.Image = Image.FromFile(openFileDialog.FileName);
+            }
+            var person = PersonStore.GetByIndex(_currentPersonIndex);
+            person.Photo = (Bitmap)pictureBoxPhoto.Image;
         }
     }
 }

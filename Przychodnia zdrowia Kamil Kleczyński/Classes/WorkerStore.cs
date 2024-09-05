@@ -52,7 +52,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             //var message = ValidateWorker(worker);
             //if (!string.IsNullOrEmpty(message)) return message;
 
-            var workerToUpdate = GetByPesel(worker.Pesel);
+            var workerToUpdate = PersonStore.GetByPesel(worker.Pesel) as Worker;
             workerToUpdate.Update(worker);
         }
 

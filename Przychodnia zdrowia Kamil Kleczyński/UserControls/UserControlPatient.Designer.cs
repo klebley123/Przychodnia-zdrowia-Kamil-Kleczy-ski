@@ -59,7 +59,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.groupBox2.Controls.Add(this.labelPrimaryDoctor);
             this.groupBox2.Controls.Add(this.txtMedicalRecordNumber);
             this.groupBox2.Controls.Add(this.labelMedicalRecordNumber);
-            this.groupBox2.Location = new System.Drawing.Point(724, 13);
+            this.groupBox2.Location = new System.Drawing.Point(681, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(317, 272);
             this.groupBox2.TabIndex = 12;
@@ -179,8 +179,9 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox2);
             this.Name = "UserControlPatient";
-            this.Size = new System.Drawing.Size(1080, 390);
+            this.Size = new System.Drawing.Size(1020, 390);
             this.Load += new System.EventHandler(this.UserControlPatient_Load);
+            this.Controls.SetChildIndex(this.groupBox2, 0);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);

@@ -33,19 +33,19 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private string _iDNumber;
         private Bitmap _photo;
 
-        public string Pesel { get => _pesel; private set => _pesel = value; }
-        public string FirstName { get => _firstName; private set => _firstName = value; }
-        public string LastName { get => _lastName; private set => _lastName = value; }
-        public DateTime? DateOfBirth { get => _dateOfBirth; private set => _dateOfBirth = value; }
-        public GenderEnum Gender { get => _gender; private set => _gender = value; }
-        public string Address { get => _address; private set => _address = value; }
-        public string Email { get => _eMail; private set => _eMail = value; }
-        public string PhoneNumber { get => _phoneNumber; private set => _phoneNumber = value; }
-        public bool Insurance { get => _insurance; private set => _insurance = value; }
-        public string IdNumber { get => _iDNumber; private set => _iDNumber = value; }
+        public string Pesel { get => _pesel; set => _pesel = value; }
+        public string FirstName { get => _firstName; set => _firstName = value; }
+        public string LastName { get => _lastName; set => _lastName = value; }
+        public DateTime? DateOfBirth { get => _dateOfBirth; set => _dateOfBirth = value; }
+        public GenderEnum Gender { get => _gender; set => _gender = value; }
+        public string Address { get => _address; set => _address = value; }
+        public string Email { get => _eMail; set => _eMail = value; }
+        public string PhoneNumber { get => _phoneNumber; set => _phoneNumber = value; }
+        public bool Insurance { get => _insurance; set => _insurance = value; }
+        public string IdNumber { get => _iDNumber; set => _iDNumber = value; }
 
         [XmlIgnore]
-        public Bitmap Photo { get => _photo; private set => _photo = value; }
+        public Bitmap Photo { get => _photo; set => _photo = value; }
 
         [XmlElement("Photo")]
         public byte[] PhotoSerialized

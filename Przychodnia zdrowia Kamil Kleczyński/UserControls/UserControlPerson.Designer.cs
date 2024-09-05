@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.buttonFullValue = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxPhoto = new System.Windows.Forms.PictureBox();
             this.btnLoad = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
@@ -53,7 +53,8 @@
             this.textBoxPesel = new System.Windows.Forms.TextBox();
             this.labelPesel = new System.Windows.Forms.Label();
             this.listPerson = new System.Windows.Forms.ListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.buttonLoadPhoto = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).BeginInit();
             this.groupBoxPersonData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,15 +68,15 @@
             this.buttonFullValue.UseVisualStyleBackColor = true;
             this.buttonFullValue.Click += new System.EventHandler(this.ButtonFullValue_Click);
             // 
-            // pictureBox1
+            // pictureBoxPhoto
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(20, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 102);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 51;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxPhoto.Location = new System.Drawing.Point(20, 3);
+            this.pictureBoxPhoto.Name = "pictureBoxPhoto";
+            this.pictureBoxPhoto.Size = new System.Drawing.Size(100, 102);
+            this.pictureBoxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPhoto.TabIndex = 51;
+            this.pictureBoxPhoto.TabStop = false;
             // 
             // btnLoad
             // 
@@ -292,12 +293,23 @@
             this.listPerson.Size = new System.Drawing.Size(317, 225);
             this.listPerson.TabIndex = 43;
             // 
+            // buttonLoadPhoto
+            // 
+            this.buttonLoadPhoto.Location = new System.Drawing.Point(126, 83);
+            this.buttonLoadPhoto.Name = "buttonLoadPhoto";
+            this.buttonLoadPhoto.Size = new System.Drawing.Size(101, 23);
+            this.buttonLoadPhoto.TabIndex = 53;
+            this.buttonLoadPhoto.Text = "Przypisz zdjęcie";
+            this.buttonLoadPhoto.UseVisualStyleBackColor = true;
+            this.buttonLoadPhoto.Click += new System.EventHandler(this.buttonLoadPhoto_Click);
+            // 
             // UserControlPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonLoadPhoto);
             this.Controls.Add(this.buttonFullValue);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxPhoto);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonUpdate);
@@ -308,7 +320,7 @@
             this.Controls.Add(this.listPerson);
             this.Name = "UserControlPerson";
             this.Size = new System.Drawing.Size(690, 374);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).EndInit();
             this.groupBoxPersonData.ResumeLayout(false);
             this.groupBoxPersonData.PerformLayout();
             this.ResumeLayout(false);
@@ -318,7 +330,7 @@
         #endregion
 
         private System.Windows.Forms.Button buttonFullValue;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxPhoto;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonUpdate;
@@ -342,5 +354,6 @@
         private System.Windows.Forms.TextBox textBoxPesel;
         private System.Windows.Forms.Label labelPesel;
         private System.Windows.Forms.ListBox listPerson;
+        private System.Windows.Forms.Button buttonLoadPhoto;
     }
 }

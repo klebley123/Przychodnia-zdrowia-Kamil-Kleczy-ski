@@ -17,12 +17,12 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         private readonly DiseaseStore _diseaseStoreStore = new DiseaseStore();
 
-        public string MedicalRecordNumber { get => _medicalRecordNumber; private set => _medicalRecordNumber = value; }
-        public string PrimaryDoctor { get => _primaryDoctor; private set => _primaryDoctor = value; }
-        public int Weight { get => _weight; private set => _weight = value; }
-        public int Height { get => _height; private set => _height = value; }
-        public string BloodGroup { get => _bloodGroup; private set => _bloodGroup = value; }
-        public List<int> DiseaseId { get => _diseaseId; private set => _diseaseId = value; }
+        public string MedicalRecordNumber { get => _medicalRecordNumber; set => _medicalRecordNumber = value; }
+        public string PrimaryDoctor { get => _primaryDoctor; set => _primaryDoctor = value; }
+        public int Weight { get => _weight; set => _weight = value; }
+        public int Height { get => _height; set => _height = value; }
+        public string BloodGroup { get => _bloodGroup; set => _bloodGroup = value; }
+        public List<int> DiseaseId { get => _diseaseId; set => _diseaseId = value; }
         
         public Patient() : base()
         {

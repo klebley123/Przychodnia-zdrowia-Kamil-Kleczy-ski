@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -16,6 +17,12 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             _cancelButtonClicked += ClearForm;
             _loadButtonClicked += ButtonLoad_Click;
             _updateButtonClicked += ButtonUpdate_Click;
+            //_photoButtonClicked += ButtonLoadPhoto_Click;
+        }
+
+        private void UserControlWorker__photoButtonClicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void UserControlWorker_Load(object sender, EventArgs e)
@@ -207,5 +214,16 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             textBoxWorkerId.Text = "2256";
             textBoxSalary.Text = "123";
         }
+
+        //private void ButtonLoadPhoto_Click(object sender, EventArgs e)
+        //{
+        //    var openFileDialog = new OpenFileDialog();
+        //    openFileDialog.Title = @"Zdjęcia";
+        //    openFileDialog.Filter = @"Photo Files (*.jpg)|*.jpg";
+        //    //if (openFileDialog.ShowDialog() == DialogResult.OK)
+        //    //{
+        //    //    //pictureBoxPhoto.Image = Image.FromFile(openFileDialog.FileName);
+        //    //}
+        //}
     }
 }
