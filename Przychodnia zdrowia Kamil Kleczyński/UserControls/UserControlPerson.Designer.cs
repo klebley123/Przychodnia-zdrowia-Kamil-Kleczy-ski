@@ -295,11 +295,11 @@
             // 
             // buttonLoadPhoto
             // 
-            this.buttonLoadPhoto.Location = new System.Drawing.Point(126, 83);
+            this.buttonLoadPhoto.Location = new System.Drawing.Point(126, 82);
             this.buttonLoadPhoto.Name = "buttonLoadPhoto";
-            this.buttonLoadPhoto.Size = new System.Drawing.Size(101, 23);
+            this.buttonLoadPhoto.Size = new System.Drawing.Size(92, 23);
             this.buttonLoadPhoto.TabIndex = 53;
-            this.buttonLoadPhoto.Text = "Przypisz zdjęcie";
+            this.buttonLoadPhoto.Text = "Wybierz zdjęcie";
             this.buttonLoadPhoto.UseVisualStyleBackColor = true;
             this.buttonLoadPhoto.Click += new System.EventHandler(this.buttonLoadPhoto_Click);
             // 

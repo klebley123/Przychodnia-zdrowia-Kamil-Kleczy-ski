@@ -80,9 +80,9 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 var email = Email;
                 var phoneNumber = TelNum;
                 var insurance = Insured;
-                //var photo = PictureBox;
+                var photo = Photo;
 
-                var patient = new Patient(pesel, idNumber, firstName, lastName, address, email, phoneNumber, insurance,
+                var patient = new Patient(pesel, idNumber, firstName, lastName, address, email, phoneNumber, insurance, photo,
                                           txtMedicalRecordNumber.Text, txtPrimaryDoctor.Text, weight, height, cmbBloodGroup.Text, GetDiseases());
 
                 //var message = PatientStore.Add(patient);
@@ -117,9 +117,10 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 var email = Email;
                 var phoneNumber = TelNum;
                 var insurance = Insured;
-
+                var photo = Photo;
+                
                 var patientToUpdate = PatientStore.GetByPesel(pesel);
-                patientToUpdate.Update(idNumber, firstName, lastName, address, email, phoneNumber, insurance, txtMedicalRecordNumber.Text,
+                patientToUpdate.Update(idNumber, firstName, lastName, address, email, phoneNumber, insurance, photo,  txtMedicalRecordNumber.Text,
                     txtPrimaryDoctor.Text, weight, height, cmbBloodGroup.Text, GetDiseases());
 
                 PatientStore.Update(patientToUpdate);
@@ -128,6 +129,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -183,19 +185,5 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
             return result;
         }
-
-        //private void ButtonLoadPhoto_Click(object sender, EventArgs e)
-        //{
-        //    var openFileDialog = new OpenFileDialog();
-        //    openFileDialog.Title = @"Zdjęcia";
-        //    openFileDialog.Filter = @"Photo Files (*.jpg)|*.jpg";
-        //    var person = PersonStore.GetByIndex(_currentPatientsIndex);
-        //    person.Photo = (Bitmap)pictureBoxPhoto.Image;
-        //    //if (openFileDialog.ShowDialog() == DialogResult.OK)
-        //    //{
-        //    //    pictureBoxPhoto.Image = Image.FromFile(openFileDialog.FileName);
-        //    //}
-        //}
-
     }
 }

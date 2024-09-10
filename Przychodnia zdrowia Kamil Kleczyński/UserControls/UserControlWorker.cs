@@ -83,6 +83,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                     Email,
                     TelNum,
                     Insured,
+                    Photo,
                     cmbPosition.Text,
                     textBoxWorkerId.Text,
                     dateTimePickerDateOfHire.Value.Date,
@@ -186,16 +187,17 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 var email = Email;
                 var phoneNumber = TelNum;
                 var insurance = Insured;
+                var photo = Photo;
 
                 var workerToUpdate = WorkerStore.GetByPesel(pesel);
                 if (decimal.TryParse(textBoxSalary.Text, out var salary))
                 {
-                    workerToUpdate.Update(idNumber, firstName, lastName, address, email, phoneNumber, insurance, 
+                    workerToUpdate.Update(idNumber, firstName, lastName, address, email, phoneNumber, insurance, photo,
                         cmbPosition.Text, textBoxWorkerId.Text, dateTimePickerDateOfHire.Value.Date, salary);
                 }
                 else
                 {
-                    workerToUpdate.Update(idNumber, firstName, lastName, address, email, phoneNumber, insurance, 
+                    workerToUpdate.Update(idNumber, firstName, lastName, address, email, phoneNumber, insurance, photo,
                         cmbPosition.Text, textBoxWorkerId.Text, dateTimePickerDateOfHire.Value.Date, workerToUpdate.Salary);
                 }
                 
@@ -207,6 +209,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
                 MessageBox.Show(ex.Message, @"Błąd zapisu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void ButtonFullValue_Click(object sender, EventArgs e)
         {
             cmbPosition.Text = "Lekarz";
@@ -214,16 +217,5 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             textBoxWorkerId.Text = "2256";
             textBoxSalary.Text = "123";
         }
-
-        //private void ButtonLoadPhoto_Click(object sender, EventArgs e)
-        //{
-        //    var openFileDialog = new OpenFileDialog();
-        //    openFileDialog.Title = @"Zdjęcia";
-        //    openFileDialog.Filter = @"Photo Files (*.jpg)|*.jpg";
-        //    //if (openFileDialog.ShowDialog() == DialogResult.OK)
-        //    //{
-        //    //    //pictureBoxPhoto.Image = Image.FromFile(openFileDialog.FileName);
-        //    //}
-        //}
     }
 }

@@ -24,7 +24,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         public ListBox.ObjectCollection ListItems { get => listPerson.Items; }
 
-        public PictureBox PictureBox { get => pictureBoxPhoto; private set => pictureBoxPhoto = value; }
+        public Bitmap Photo { get => (Bitmap)pictureBoxPhoto.Image; private set => pictureBoxPhoto.Image = value; }
         public string Pesel { get => textBoxPesel.Text; private set => textBoxPesel.Text = value; }
         public string FirstName { get => textBoxFirstName.Text; private set => textBoxFirstName.Text = value; }
         public string LastName { get => textBoxLastName.Text; private set => textBoxLastName.Text = value; }
@@ -93,19 +93,16 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             {
                 buttonPrevious.Enabled = false;
                 buttonNext.Enabled = false;
-                buttonLoadPhoto.Enabled = false;
             }
             else
             {
                 buttonPrevious.Enabled = true;
                 buttonNext.Enabled = true;
-                buttonLoadPhoto.Enabled = true;
             }
 
             if (_currentPersonIndex == lastIndex)
             {
                 buttonNext.Enabled = false;
-                buttonLoadPhoto.Enabled = true;
             }
 
             if (_currentPersonIndex == 0)
@@ -171,6 +168,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             Email = person.Email;
             TelNum = person.PhoneNumber;
             Insured = person.Insurance;
+            Photo = (Bitmap)person.Photo;
             _loadButtonClicked?.Invoke(this, EventArgs.Empty);
         }
 
@@ -191,8 +189,6 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             {
                 pictureBoxPhoto.Image = Image.FromFile(openFileDialog.FileName);
             }
-            var person = PersonStore.GetByIndex(_currentPersonIndex);
-            person.Photo = (Bitmap)pictureBoxPhoto.Image;
         }
     }
 }

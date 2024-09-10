@@ -30,8 +30,8 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         // konstruktor wieloargumentowy
         public Worker(string pesel, string idNumber, string firstName, string lastName, string address, string email,
-            string phoneNumber, bool insurance, string position, string workerId, DateTime dateOfHire, decimal salary)
-            : base(pesel, idNumber, firstName, lastName, address, email, phoneNumber, insurance)
+            string phoneNumber, bool insurance, Bitmap photo, string position, string workerId, DateTime dateOfHire, decimal salary)
+            : base(pesel, idNumber, firstName, lastName, address, email, phoneNumber, insurance, photo)
         {
             _position = position;
             _workerId = workerId;
@@ -136,9 +136,9 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         }
 
         public bool Update(string idNumber, string firstName, string lastName, string address, string email,
-            string phoneNumber, bool insurance, string position, string workerId, DateTime dateOfHire, decimal salary)
+            string phoneNumber, bool insurance, Bitmap photo, string position, string workerId, DateTime dateOfHire, decimal salary)
         {
-            base.Update(idNumber, firstName, lastName, address, email, phoneNumber, insurance);
+            base.Update(idNumber, firstName, lastName, address, email, phoneNumber, insurance, photo);
             _position = position;
             _workerId = workerId;
             _dateOfHire = dateOfHire;

@@ -35,9 +35,9 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         }
 
         public Patient(string pesel, string idNumber, string firstName, string lastName, string address, string email,
-            string phoneNumber, bool insurance, string medicalRecordNumber, string primaryDoctor, int weight,
+            string phoneNumber, bool insurance, Bitmap photo, string medicalRecordNumber, string primaryDoctor, int weight,
             int height, string bloodGroup, List<int> disease)
-            : base(pesel, idNumber, firstName, lastName, address, email, phoneNumber, insurance)
+            : base(pesel, idNumber, firstName, lastName, address, email, phoneNumber, insurance, photo)
         {
             _medicalRecordNumber = medicalRecordNumber;
             _primaryDoctor = primaryDoctor;
@@ -122,10 +122,10 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         }
 
         public bool Update(string idNumber, string firstName, string lastName, string address, string email,
-            string phoneNumber, bool insurance, string medicalRecordNumber, string primaryDoctor, int weight,
+            string phoneNumber, bool insurance, Bitmap photo, string medicalRecordNumber, string primaryDoctor, int weight,
             int height, string bloodGroup, List<int> disease)
         {
-            base.Update(idNumber, firstName, lastName, address, email, phoneNumber, insurance);
+            base.Update(idNumber, firstName, lastName, address, email, phoneNumber, insurance, photo);
             _medicalRecordNumber = medicalRecordNumber;
             _primaryDoctor = primaryDoctor;
             _weight = weight;

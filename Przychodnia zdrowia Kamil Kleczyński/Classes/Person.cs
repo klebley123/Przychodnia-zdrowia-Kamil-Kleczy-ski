@@ -105,7 +105,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         }
 
         protected Person(string pesel, string idNumber, string firstName, string lastName, string address, string email,
-            string phoneNumber, bool insurance)
+            string phoneNumber, bool insurance, Bitmap photo)
         {
             //var p = IsValidPesel(pesel) ? pesel : DefaultPesel;
             _pesel = pesel;
@@ -118,6 +118,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             _eMail = email;
             _phoneNumber = phoneNumber;
             _insurance = insurance;
+            _photo = photo;
         }
 
         protected Person(Person person)
@@ -133,6 +134,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             _eMail = person._eMail;
             _phoneNumber = person._phoneNumber;
             _insurance = person._insurance;
+            _photo = person._photo;
         }
 
         public virtual (List<string> info, Bitmap image) GetInfo()
@@ -199,7 +201,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         }
 
         protected bool Update(string idNumber, string firstName, string lastName, string address, string email,
-            string phoneNumber, bool insurance)
+            string phoneNumber, bool insurance, Bitmap photo)
         {
             _iDNumber = idNumber;
             _firstName = firstName;
@@ -208,6 +210,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             _eMail = email;
             _phoneNumber = phoneNumber;
             _insurance = insurance;
+            _photo = photo;
             return true; //TODO: Add conditions
         }
 
@@ -220,6 +223,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             _eMail = otherPerson._eMail;
             _phoneNumber = otherPerson._phoneNumber;
             _insurance = otherPerson._insurance;
+            _photo = otherPerson._photo;
             return true; //TODO: Add conditions
         }
     }
