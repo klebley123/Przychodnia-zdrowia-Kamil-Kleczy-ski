@@ -85,6 +85,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.textBoxSalary.Name = "textBoxSalary";
             this.textBoxSalary.Size = new System.Drawing.Size(198, 20);
             this.textBoxSalary.TabIndex = 6;
+            this.textBoxSalary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSalary_KeyPress);
             // 
             // labelWorkerId
             // 

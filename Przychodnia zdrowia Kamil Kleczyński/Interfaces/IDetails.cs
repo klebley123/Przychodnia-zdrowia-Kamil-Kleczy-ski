@@ -9,6 +9,10 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
     public interface IDetails
     {
+        string Email { get; set; }
+        string PhoneNumber { get; set; }
+        bool Insurance { get; set; }
+        Bitmap Photo { get; set; }
         (List<string> info, Bitmap image) GetInfo();
     }
 }

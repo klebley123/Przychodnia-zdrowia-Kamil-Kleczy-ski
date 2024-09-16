@@ -133,6 +133,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.Size = new System.Drawing.Size(211, 20);
             this.txtHeight.TabIndex = 30;
+            this.txtHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHeight_KeyPress);
             // 
             // txtWeight
             // 
@@ -140,6 +141,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(211, 20);
             this.txtWeight.TabIndex = 29;
+            this.txtWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWeight_KeyPress);
             // 
             // txtPrimaryDoctor
             // 
@@ -147,6 +149,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.txtPrimaryDoctor.Name = "txtPrimaryDoctor";
             this.txtPrimaryDoctor.Size = new System.Drawing.Size(211, 20);
             this.txtPrimaryDoctor.TabIndex = 28;
+            this.txtPrimaryDoctor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrimaryDoctor_KeyPress);
             // 
             // labelPrimaryDoctor
             // 
@@ -163,6 +166,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             this.txtMedicalRecordNumber.Name = "txtMedicalRecordNumber";
             this.txtMedicalRecordNumber.Size = new System.Drawing.Size(211, 20);
             this.txtMedicalRecordNumber.TabIndex = 26;
+            this.txtMedicalRecordNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMedicalRecordNumber_KeyPress);
             // 
             // labelMedicalRecordNumber
             // 

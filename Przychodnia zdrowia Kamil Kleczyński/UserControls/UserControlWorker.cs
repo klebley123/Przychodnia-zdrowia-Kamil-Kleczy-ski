@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Przychodnia_zdrowia_Kamil_Kleczynski
 {
@@ -216,6 +218,26 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             dateTimePickerDateOfHire.Text = DateTime.Now.ToString();
             textBoxWorkerId.Text = "2256";
             textBoxSalary.Text = "123";
+        }
+
+        private void textBoxSalary_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Regex regex = new Regex(@"^[0-9\.\,]+$");
+
+            if (!regex.IsMatch(e.KeyChar.ToString()) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; 
+            }
+
+            if (e.KeyChar == '.' && textBoxSalary.Text.Contains("."))
+            {
+                e.Handled = true; 
+            }
+
+            if (e.KeyChar == ',' && textBoxSalary.Text.Contains(","))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

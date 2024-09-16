@@ -233,6 +233,7 @@
             this.textBoxIdNum.Name = "textBoxIdNum";
             this.textBoxIdNum.Size = new System.Drawing.Size(211, 20);
             this.textBoxIdNum.TabIndex = 7;
+            this.textBoxIdNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxIdNum_KeyPress);
             // 
             // textBoxTelNum
             // 
@@ -240,6 +241,7 @@
             this.textBoxTelNum.Name = "textBoxTelNum";
             this.textBoxTelNum.Size = new System.Drawing.Size(211, 20);
             this.textBoxTelNum.TabIndex = 6;
+            this.textBoxTelNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTelNum_KeyPress);
             // 
             // textBoxEMail
             // 
@@ -261,6 +263,7 @@
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(211, 20);
             this.textBoxLastName.TabIndex = 3;
+            this.textBoxLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLastName_KeyPress);
             // 
             // textBoxFirstName
             // 
@@ -268,6 +271,7 @@
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(211, 20);
             this.textBoxFirstName.TabIndex = 2;
+            this.textBoxFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFirstName_KeyPress);
             // 
             // textBoxPesel
             // 
@@ -275,6 +279,7 @@
             this.textBoxPesel.Name = "textBoxPesel";
             this.textBoxPesel.Size = new System.Drawing.Size(211, 20);
             this.textBoxPesel.TabIndex = 1;
+            this.textBoxPesel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPesel_KeyPress);
             // 
             // labelPesel
             // 

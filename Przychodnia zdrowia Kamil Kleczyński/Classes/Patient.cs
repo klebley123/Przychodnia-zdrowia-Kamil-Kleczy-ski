@@ -23,7 +23,19 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         public int Height { get => _height; set => _height = value; }
         public string BloodGroup { get => _bloodGroup; set => _bloodGroup = value; }
         public List<int> DiseaseId { get => _diseaseId; set => _diseaseId = value; }
-        
+
+        string IBasicInfo.Pesel { get => Pesel; set => Pesel = value; }
+        string IBasicInfo.FirstName { get => FirstName; set => FirstName = value; }
+        string IBasicInfo.LastName { get => LastName; set => LastName = value; }
+        DateTime? IBasicInfo.DateOfBirth { get => DateOfBirth; set => DateOfBirth = value; }
+        GenderEnum IBasicInfo.Gender { get => Gender; set => Gender = value; }
+        string IBasicInfo.Address { get => Address; set => Address = value; }
+        string IBasicInfo.IdNumber { get => IdNumber; set => IdNumber = value; }
+        string IDetails.Email { get => Email; set => Email = value; }
+        string IDetails.PhoneNumber { get => PhoneNumber; set => PhoneNumber = value; }
+        bool IDetails.Insurance { get => Insurance; set => Insurance = value; }
+        Bitmap IDetails.Photo { get => Photo; set => Photo = value; }
+
         public Patient() : base()
         {
             _medicalRecordNumber = "123456";
@@ -62,27 +74,31 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         (List<string>, Bitmap) IBasicInfo.GetInfo()
         {
-            var info = base.GetInfo();
+            List<string> list = new List<string>();
+            list.Add($"Pesel: {(this as IBasicInfo).Pesel}");
+            list.Add($"Imie: {(this as IBasicInfo).FirstName}");
+            list.Add($"Nazwisko: {(this as IBasicInfo).LastName}");
+            list.Add($"Data urodzenia: {(this as IBasicInfo).DateOfBirth}");
+            list.Add($"Płeć: {(this as IBasicInfo).Gender}");
+            list.Add($"Adres: {(this as IBasicInfo).Address}");
+            list.Add($"Nr dowodu: {(this as IBasicInfo).IdNumber}");
+            //info.Item1.Add($"Pesel: {Pesel}"); 
             //info.Item1.Add($"Medical Record Number: {MedicalRecordNumber}");
             //info.Item1.Add($"Primary Doctor: {PrimaryDoctor}");
             //info.Item1.Add($"Weight: {Weight}");
             //info.Item1.Add($"Height: {Height}");
             //info.Item1.Add($"BloodGroup: {BloodGroup}");
             //info.Item1.Add($"Diseases: {string.Join(", ", GetDisease(DiseaseId))}");
-            info.image = Photo;
 
-            return info;
+            return (list, Photo);
         }
 
         (List<string>, Bitmap) IDetails.GetInfo()
         {
             List<string> lista = new List<string>(); //base.GetInfo();
-            lista.Add($"Medical Record Number: {_medicalRecordNumber}");
-            lista.Add($"Primary Doctor: {_primaryDoctor}");
-            lista.Add($"Weight: {_weight}");
-            lista.Add($"Height: {_height}");
-            lista.Add($"BloodGroup: {_bloodGroup}");
-            lista.Add($"Diseases: {string.Join(", ", GetDisease(_diseaseId))}");
+            lista.Add($"Email: {(this as IDetails).Email}");
+            lista.Add($"Nr Tel: {(this as IDetails).PhoneNumber}");
+            lista.Add($"Ubezpieczenie: {(this as IDetails).Insurance}");
 
             return (lista, Photo);
         }
@@ -92,7 +108,12 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
             var basicInfo = ((IBasicInfo)this).GetInfo();
             var details = ((IDetails)this).GetInfo();
             basicInfo.info.AddRange(details.info);
-
+            basicInfo.info.Add($"Medical Record Number: {_medicalRecordNumber}");
+            basicInfo.info.Add($"Primary Doctor: {_primaryDoctor}");
+            basicInfo.info.Add($"Weight: {_weight}");
+            basicInfo.info.Add($"Height: {_height}");
+            basicInfo.info.Add($"BloodGroup: {_bloodGroup}");
+            basicInfo.info.Add($"Diseases: {string.Join(", ", GetDisease(_diseaseId))}");
             return basicInfo;
         }
 

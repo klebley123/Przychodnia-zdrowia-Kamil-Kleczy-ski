@@ -27,10 +27,11 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
         private DateTime? _dateOfBirth;
         private GenderEnum _gender;
         private string _address;
+        private string _iDNumber;
+
         private string _eMail;
         private string _phoneNumber;
         private bool _insurance;
-        private string _iDNumber;
         private Bitmap _photo;
 
         public string Pesel { get => _pesel; set => _pesel = value; }
