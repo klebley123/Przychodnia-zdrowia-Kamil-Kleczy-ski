@@ -25,7 +25,7 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         public ListBox.ObjectCollection ListItems { get => listPerson.Items; }
 
-        public Bitmap Photo { get => (Bitmap)pictureBoxPhoto.Image; private set => pictureBoxPhoto.Image = value; }
+        public Bitmap Photo { get; set; }
         public string Pesel { get => textBoxPesel.Text; private set => textBoxPesel.Text = value; }
         public string FirstName { get => textBoxFirstName.Text; private set => textBoxFirstName.Text = value; }
         public string LastName { get => textBoxLastName.Text; private set => textBoxLastName.Text = value; }
@@ -183,12 +183,20 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         private void buttonLoadPhoto_Click(object sender, EventArgs e)
         {
-            var openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = @"Zdjęcia";
-            openFileDialog.Filter = @"Photo Files (*.jpg)|*.jpg";
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try 
             {
-                pictureBoxPhoto.Image = Image.FromFile(openFileDialog.FileName);
+                var openFileDialog = new OpenFileDialog();
+                openFileDialog.Title = @"Zdjęcia";
+                openFileDialog.Filter = @"Photo Files (*.jpg)|*.jpg";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Photo = new Bitmap(Image.FromFile(openFileDialog.FileName));
+                    pictureBoxPhoto.Image = Photo;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, @"Wystąpił błąd możliwe, że zdjęcie jest uszkodzone", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -104,57 +104,74 @@ namespace Przychodnia_zdrowia_Kamil_Kleczynski
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            var saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Title = @"Export ludzi";
-            saveFileDialog.FileName = "Persons.xml";
-            saveFileDialog.Filter = @"XML Files (*.xml)|*.xml";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            try 
             {
-                var path = saveFileDialog.FileName;
-                var persons = PersonStore.GetAllInOrder();
-                var xs = new XmlSerializer(persons.GetType());
-                TextWriter writer = new StreamWriter(path);
-                xs.Serialize(writer, persons);
-                writer.Close();
+                var saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Title = @"Export ludzi";
+                saveFileDialog.FileName = "Persons.xml";
+                saveFileDialog.Filter = @"XML Files (*.xml)|*.xml";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var path = saveFileDialog.FileName;
+                    var persons = PersonStore.GetAllInOrder();
+                    var xs = new XmlSerializer(persons.GetType());
+                    TextWriter writer = new StreamWriter(path);
+                    xs.Serialize(writer, persons);
+                    writer.Close();
+                }
             }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message, @"Wystąpił błąd!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
-            var openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = @"Import ludzi";
-            openFileDialog.Filter = @"XML Files (*.xml)|*.xml";
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                var xs = new XmlSerializer(typeof(Person));
-                using (var stream = new StreamReader(openFileDialog.FileName))
+                var openFileDialog = new OpenFileDialog();
+                openFileDialog.Title = @"Import ludzi";
+                openFileDialog.Filter = @"XML Files (*.xml)|*.xml";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    var xmlDoc = new XmlDocument();
-                    xmlDoc.Load(stream);
-                    var xmlPatientList = xmlDoc.GetElementsByTagName("Person");
-                    if (xmlPatientList.Count == 0) return;
-
-                    foreach (XmlNode xmlItem in xmlPatientList)
+                    var xs = new XmlSerializer(typeof(Person));
+                    using (var stream = new StreamReader(openFileDialog.FileName))
                     {
-                        using (XmlReader reader = new XmlNodeReader(xmlItem))
-                        {
-                            var person = xs.Deserialize(reader);
-                            if (person.GetType() == typeof(Patient))
-                            {
-                                PersonStore.People.Add((Patient)person);
-                            }
+                        var xmlDoc = new XmlDocument();
+                        xmlDoc.Load(stream);
+                        var xmlPatientList = xmlDoc.GetElementsByTagName("Person");
+                        if (xmlPatientList.Count == 0) return;
 
-                            if (person.GetType() == typeof(Worker))
+                        foreach (XmlNode xmlItem in xmlPatientList)
+                        {
+                            using (XmlReader reader = new XmlNodeReader(xmlItem))
                             {
-                                PersonStore.People.Add((Worker)person);
+                                var person = xs.Deserialize(reader);
+                                if (person.GetType() == typeof(Patient))
+                                {
+                                    PersonStore.People.Add((Patient)person);
+                                }
+
+                                if (person.GetType() == typeof(Worker))
+                                {
+                                    PersonStore.People.Add((Worker)person);
+                                }
                             }
                         }
-                    }
 
-                    LoadFirstPerson();
+                        LoadFirstPerson();
+                    }
                 }
             }
+            catch (Exception ex)   
+            {
+                MessageBox.Show(ex.Message, @"Wystąpił błąd możliwe, że plik XML jest uszkodzony", MessageBoxButtons.OK, MessageBoxIcon.Error);    
+            }
+            
+            
         }
     }
 }
